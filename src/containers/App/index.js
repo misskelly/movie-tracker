@@ -1,13 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.scss';
+// import Header from '../Header'
+import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { mockLatestMovie } from '../../utils/mockData'
+import movie from './movie.jpg'
+import { addMovies } from '../../actions/index'
+import { connect } from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+export class App extends Component {
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+    this.props.addMovies(mockLatestMovie);
+  }
+
+  render() {
+    let all = Array(1000).fill('')
+    const movieTiles = all.map(space => {
+      return <div className='tile'>
+        <img src={movie} className='tile'/>
+      </div>
+    })
+    
+    return (
+      <div className="App">
+        {/* <Header /> */}
+        {movieTiles}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  addMovies: (movies) => dispatch(addMovies(movies))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
