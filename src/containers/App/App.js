@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.scss';
+import Header from '../Header'
+import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 
 import movie from './movie.jpg'
 
@@ -12,8 +14,7 @@ function App() {
   })
   return (
     <div className="App">
-      <header className='header'>
-      </header>
+      <Header />
       {movieTiles}
     </div>
   );
