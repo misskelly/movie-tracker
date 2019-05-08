@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.scss';
-// import Header from '../Header'
+import Header from '../Header'
+import LoginPage from '../../components/LoginPage'
+import Banner from '../../components/Banner'
 import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 import { mockLatestMovie } from '../../utils/mockData'
-import movie from './movie.jpg'
 import { addMovies } from '../../actions/index'
 import { connect } from 'react-redux'
 import { key } from '../../apiKey';
@@ -25,17 +25,14 @@ export class App extends Component {
   }
 
   render() {
-    let all = Array(1000).fill('')
-    const movieTiles = all.map(space => {
-      return <div className='tile'>
-        <img src={movie} className='tile'/>
-      </div>
-    })
-    
+
     return (
       <div className="App">
-        {/* <Header /> */}
-        {movieTiles}
+
+        <Route path='/' component={Header} />
+        {/* <Route exact path='/' component={Home} /> */}
+        <Route exact path='/login' component={LoginPage} />
+        <Banner />
       </div>
     );
   }

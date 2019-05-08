@@ -1,0 +1,30 @@
+//BANNER
+
+.banner-section {
+  position: relative;
+}
+.movie-tiles {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+}
+
+.tile {
+  position: relative;
+  filter: brightness(70%);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.banner-heading {
+  color: yellow;
+  font-size: 4rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 10%;
+  right: 5%;
+  margin: 0;
+}

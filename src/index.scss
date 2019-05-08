@@ -1,5 +1,11 @@
 @import './containers/App/App';
+@import './containers/Header/Header';
+@import './components/LoginPage/LoginPage';
+@import './components/Banner/Banner';
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -9,6 +15,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: lightslategrey;
+
 }
 
 code {
