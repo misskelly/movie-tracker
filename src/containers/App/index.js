@@ -6,14 +6,22 @@ import { mockLatestMovie } from '../../utils/mockData'
 import movie from './movie.jpg'
 import { addMovies } from '../../actions/index'
 import { connect } from 'react-redux'
+import { key } from '../../apiKey';
+import { fetchMovies } from '../../utils/apiFetches/fetchMovies';
 
 export class App extends Component {
   constructor() {
     super();
   }
 
-  componentDidMount() {
-    this.props.addMovies(mockLatestMovie);
+  async componentDidMount() {
+    const nowShowingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
+    try {
+      const movies = await fetchMovies(nowShowingUrl);
+      await this.props.addMovies(movies.results)
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   render() {
