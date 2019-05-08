@@ -10,6 +10,7 @@ class Header extends Component {
   render() {
     return(
       <header className='header'>
+        <NavLink to='/' className='nav'> Home </NavLink>
         <NavLink to='/login' className='nav'> Create Account </NavLink>
         <NavLink to='/login' className='nav'> Log In </NavLink>
       </header>
