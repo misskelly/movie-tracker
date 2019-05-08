@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { key } from '../../apiKey';
 import Header from '../Header'
 import LoginPage from '../../components/LoginPage'
 import Banner from '../../components/Banner'
-import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
-import { mockLatestMovie } from '../../utils/mockData'
-import { addMovies } from '../../actions/index'
-import { connect } from 'react-redux'
-import { key } from '../../apiKey';
+import Movies from '../Movies';
 import { fetchMovies } from '../../utils/apiFetches/fetchMovies';
+import { cleanMovies } from '../../utils/cleaners/cleanMovies'
+import { addMovies } from '../../actions/index'
 
 export class App extends Component {
   constructor() {
@@ -18,7 +19,8 @@ export class App extends Component {
     const nowShowingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
     try {
       const movies = await fetchMovies(nowShowingUrl);
-      await this.props.addMovies(movies.results)
+      const result = await cleanMovies(movies.results)
+      await this.props.addMovies(result)
     } catch(error) {
       console.log(error)
     }
@@ -28,11 +30,11 @@ export class App extends Component {
 
     return (
       <div className="App">
-
-        <Route path='/' component={Header} />
+        < Header />
+        <Route exact path='/' component={ Banner } />
         {/* <Route exact path='/' component={Home} /> */}
         <Route exact path='/login' component={LoginPage} />
-        <Banner />
+        <Movies />
       </div>
     );
   }
