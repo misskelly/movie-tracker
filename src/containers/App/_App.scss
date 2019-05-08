@@ -1,16 +1,5 @@
 .App {
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(30, 1fr);
-}
-
-.tile {
-  position: relative;
-  filter: brightness(60%);
-  // max-height: 2px;
-  object-fit: cover;
-  width: 100%;
-  z-index: 0;
+  text-align: center; 
 }
 
 .App-header {
