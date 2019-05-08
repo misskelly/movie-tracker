@@ -18,7 +18,7 @@ export class App extends Component {
     const nowShowingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
     try {
       const movies = await fetchMovies(nowShowingUrl);
-      await this.props.addMovies([movies])
+      await this.props.addMovies(movies.results)
     } catch(error) {
       console.log(error)
     }
