@@ -3,18 +3,13 @@ import { connect } from 'react-redux'
 import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 import { key } from '../../apiKey';
 import Header from '../Header'
+import Home from '../../components/Home';
 import LoginPage from '../../components/LoginPage'
-import Banner from '../../components/Banner'
-import Movies from '../Movies';
 import { fetchMovies } from '../../utils/apiFetches/fetchMovies';
 import { cleanMovies } from '../../utils/cleaners/cleanMovies'
 import { addMovies } from '../../actions/index'
 
 export class App extends Component {
-  constructor() {
-    super();
-  }
-
   async componentDidMount() {
     const nowShowingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
     try {
@@ -27,14 +22,11 @@ export class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
         < Header />
-        <Route exact path='/' component={ Banner } />
-        {/* <Route exact path='/' component={Home} /> */}
-        <Route exact path='/login' component={LoginPage} />
-        <Movies />
+        < Route exact path='/' component={ Home } />
+        < Route exact path='/login' component={ LoginPage } />
       </div>
     );
   }
