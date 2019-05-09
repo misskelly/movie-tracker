@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { postUser } from '../../utils/apiFetches/postUser';
 import { currentUser } from '../../actions';
-
+import { Redirect } from 'react-router-dom';
 class LoginPage extends Component {
   constructor() {
     super();
@@ -28,8 +28,8 @@ class LoginPage extends Component {
       const response = await postUser(url, userInfo);
       await this.props.formType === 'login' 
       ? this.props.signInUser(response.data)
-      : this.props.signInUser({id:response.id, email, name: userName})
-      await this.setState({ error: false})
+      : this.props.signInUser({ id:response.id, email, name: userName });
+      await this.setState({ error: false});
     } catch(error) {
       this.setState({ error: true })
     }
@@ -53,6 +53,7 @@ class LoginPage extends Component {
     const header = this.props.formType === 'login' 
       ? 'LOGIN'
       : 'SIGN-UP';
+    if (Object.values(this.props.currentUser).length) return (<Redirect to='/'/>);
     return (
       <main className='login-page'>
         <h2>{ header }</h2> 
@@ -83,7 +84,8 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  formType: state.formType
+  formType: state.formType,
+  currentUser: state.currentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
