@@ -16,17 +16,30 @@ export class Header extends Component {
   }
 
   render() {
+    const { name, email } = this.props.currentUser;
     return(
       <header className='header'>
         <NavLink to='/' className='nav'> Home </NavLink>
-        <NavLink to='/login' className='nav'> <span onClick={this.handleClick}>Create Account</span> </NavLink>
-        <NavLink to='/login' className='nav' > <span onClick={this.handleClick}>Log In</span> </NavLink>
+        {/* { name ? (<div></div>)} */}
+        <NavLink to={`${name ? '/favorites' : '/login'}`} className='nav'>
+          <span onClick={this.handleClick}>{`${ name ? 'Favorites' : 'Create Account'}`}
+          </span>
+        </NavLink>
+        <NavLink to={`${name ? '/' : '/login'}`} className='nav' >
+          <span onClick={this.handleClick}>{`${ name ? 'Log-out' : 'Log In'}`}
+          </span>
+        </NavLink>
       </header>
     )
   }
 }
 
+const mapStateToProps = (state) => ({
+  currentUser: state.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   formType: (text) => dispatch(formType(text)) 
 })
-export default connect(null, mapDispatchToProps)(Header)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

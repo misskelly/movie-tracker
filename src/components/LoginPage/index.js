@@ -53,7 +53,7 @@ class LoginPage extends Component {
     const header = this.props.formType === 'login' 
       ? 'LOGIN'
       : 'SIGN-UP';
-    if (Object.values(this.props.currentUser).length) return (<Redirect to='/'/>);
+    if (this.props.currentUser.name) return (<Redirect to='/'/>);
     return (
       <main className='login-page'>
         <h2>{ header }</h2> 
