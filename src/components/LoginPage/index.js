@@ -15,7 +15,7 @@ class LoginPage extends Component {
     }
   }
 
-  validateForm = async () => {
+  validateUser = async () => {
     const { email, password, userName } = this.state;
     const userInfo = this.props.formType === 'login'
       ? ({ email, password })
@@ -26,7 +26,9 @@ class LoginPage extends Component {
 
     try {
       const response = await postUser(url, userInfo);
-      await console.log(response.data)
+      await this.props.formType === 'login' 
+      ? this.props.signInUser(response.data)
+      : this.props.signInUser({id:response.id, email, name: userName})
       await this.setState({ error: false})
     } catch(error) {
       this.setState({ error: true })
@@ -41,9 +43,9 @@ class LoginPage extends Component {
     e.preventDefault();
     const { email, confirmPassword, password, userName } = this.state;
     if (this.props.formType === 'login') {
-      (email.length && password.length) && this.validateForm();
+      (email.length && password.length) && this.validateUser();
     } else {
-      (email.length && password.length && confirmPassword === password && userName.length) && this.validateForm();
+      (email.length && password.length && confirmPassword === password && userName.length) && this.validateUser();
     }
   }
 
@@ -85,7 +87,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signInUser: (id, name, email) => dispatch(currentUser(id, name, email))
+  signInUser: ({id, name, email}) => dispatch(currentUser(id, name, email))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
