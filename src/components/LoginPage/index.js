@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 // import Form from '../../containers/Form'
 
 
@@ -6,7 +8,6 @@ class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      existingUser: true,
       password: '',
       email: '',
       confirmPassword: ''
@@ -28,6 +29,8 @@ class LoginPage extends Component {
       .then(result => console.log(result))
   } 
 
+
+
   handleChange = ({target}) => {
     this.setState({[target.name]: target.value})
   } 
@@ -38,19 +41,19 @@ class LoginPage extends Component {
   }
 
   render() {
-    const header = this.state.existingUser 
+    const header = this.props.formType === 'login' 
       ? 'LOGIN'
       : 'SIGN-UP';
     return (
       <main className='login-page'>
-        <h2>{ header }</h2>
+        <h2>{ header }</h2> 
         <form className='login-form' onSubmit={this.handleSubmit}>
           <fieldset className='login-fieldset'>
             <label for='email-input' className='email-input-label input-label'>E-mail</label>
             <input type='text' id='email-input' className='form-input' onChange={this.handleChange} name='email'></input>
             <label for='password-input' className='password-input-label input-label'>Password</label>
             <input type='text' id='password-input' className='form-input' onChange={this.handleChange} name='password'></input>
-            { !this.state.existingUser && (
+            { this.props.formType === 'signup' && (
               <fieldset>
                 <input type='text' id='confirm-password-input' className='form-input'></input>
                 <label for='password-input' className='password-input-label input-label'>Confirm Password</label>
@@ -64,4 +67,7 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+const mapStateToProps = (state) => ({
+  formType: state.formType
+})
+export default connect(mapStateToProps)(LoginPage);

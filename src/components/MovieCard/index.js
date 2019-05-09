@@ -7,5 +7,4 @@ export const MovieCard = ({card}) => {
       <img src={card.poster} alt={`Promotional movie poster for ${card.title}`}/>
     </article>
   )
-}
-
+  }
