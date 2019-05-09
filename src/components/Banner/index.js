@@ -1,13 +1,16 @@
 import React from 'react';
 import movie from './movie.jpg'
+import { connect } from 'react-redux';
 
-
-const Banner = () => {
-    let all = Array(300).fill('')
+const Banner = (props) => {
+    let all = Array(90).fill('');
+    let counter = 0;
     const movieTiles = all.map(space => {
-      return <div className='tile'>
-        <img src={movie} className='tile' alt=''/>
-      </div>
+      counter === 19 ? counter = 0 : counter++;
+      return (
+        <div className='tile'>
+          <img src={props.posters[counter]} className='tile' alt=''/>
+        </div>)
     })
 
   return (
@@ -17,8 +20,11 @@ const Banner = () => {
         {movieTiles}
       </div>
     </section>
-
   )
 }
 
-export default Banner;
+const mapStateToProps = (state) => ({
+  posters: state.movies.map(movie => movie.poster)
+})
+
+export default connect(mapStateToProps)(Banner);
