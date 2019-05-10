@@ -1,0 +1,11 @@
+{
+  "editor.parameterHints.enabled": false,
+  "javascript.suggest.completeJSDocs": false,
+  "typescript.suggest.completeJSDocs": false,
+  "javascript.suggest.enabled": false,
+  "typescript.suggest.autoImports": false,
+  "workbench.tips.enabled": false,
+  "typescript.suggest.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "javascript.format.enable": false
+}
