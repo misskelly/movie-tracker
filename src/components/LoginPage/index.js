@@ -61,18 +61,18 @@ class LoginPage extends Component {
           <fieldset className='login-fieldset'>
             { this.props.formType === 'signup' && (
               <div>
-                <label for='userName' className='password-input-label input-label'>Username</label>
+                <label htmlFor='userName' className='password-input-label input-label'>Username</label>
                 <input onChange={this.handleChange} name="userName" type='text' id='userName' className='form-input'></input>
               </div>
             )}
-            <label for='email-input' className='email-input-label input-label'>E-mail</label>
-            <input type='text' id='email-input' className='form-input' onChange={this.handleChange} name='email'></input>
-            <label for='password-input' className='password-input-label input-label'>Password</label>
-            <input type='text' id='password-input' className='form-input' onChange={this.handleChange} name='password'></input>
+            <label htmlFor='email-input' className='email-input-label input-label'>E-mail</label>
+            <input type='email' id='email-input' className='form-input' onChange={this.handleChange} name='email'></input>
+            <label htmlFor='password-input' className='password-input-label input-label'>Password</label>
+            <input type='password' id='password-input' className='form-input' onChange={this.handleChange} name='password'></input>
             { this.props.formType === 'signup' && (
               <div>
-                <label for='confirm-password-input' className='password-input-label input-label'>Confirm Password</label>
-                <input onChange={this.handleChange} name="confirmPassword" type='text' id='confirm-password-input' className='form-input'></input>
+                <label htmlFor='confirm-password-input' className='password-input-label input-label'>Confirm Password</label>
+                <input onChange={this.handleChange} name="confirmPassword" type='password' id='confirm-password-input' className='form-input'></input>
               </div>
             )}
             <input type="submit" value="Submit" />
