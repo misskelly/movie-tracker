@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { postUser } from '../../utils/apiFetches/postUser';
-import { currentUser } from '../../actions';
+import { currentUser, formType } from '../../actions';
 import { Redirect } from 'react-router-dom';
 class LoginPage extends Component {
   constructor() {
@@ -18,12 +18,12 @@ class LoginPage extends Component {
   validateUser = async () => {
     const { email, password, userName } = this.state;
     const userInfo = this.props.formType === 'login'
-      ? ({ email, password })
-      : ({ email, password, name: userName });
+    ? ({ email, password })
+    : ({ email, password, name: userName });
     const url = this.props.formType === 'login'
-      ? 'http://localhost:3000/api/users'
-      : 'http://localhost:3000/api/users/new';
-
+    ? 'http://localhost:3000/api/users'
+    : 'http://localhost:3000/api/users/new';
+    
     try {
       const response = await postUser(url, userInfo);
       await this.props.formType === 'login' 
@@ -34,11 +34,11 @@ class LoginPage extends Component {
       this.setState({ error: true })
     }
   }
-
+  
   handleChange = ({target}) => {
     this.setState({ [target.name]: target.value })
   } 
-
+  
   handleSubmit = (e) => {
     e.preventDefault();
     const { email, confirmPassword, password, userName } = this.state;
@@ -48,18 +48,23 @@ class LoginPage extends Component {
       (email.length && password.length && confirmPassword === password && userName.length) && this.validateUser();
     }
   }
-
+  
   render() {
-    const header = this.props.formType === 'login' 
+    const { formType, currentUser, changeForm } = this.props
+    const createActLink = <span className='signup-link' onClick={() => changeForm('signup')} >Create Account</span>
+    const header = formType === 'login' 
       ? 'LOGIN'
       : 'SIGN-UP';
-    if (this.props.currentUser.name) return (<Redirect to='/'/>);
+    const errorText = formType === 'login'
+      ? <p>Email and password do not match an account, check login info or {createActLink}</p>
+      : 'An account for this email already exists.'
+    if (currentUser.name) return (<Redirect to='/'/>);
     return (
       <main className='login-page'>
         <h2>{ header }</h2> 
         <form className='login-form' onSubmit={this.handleSubmit}>
           <fieldset className='login-fieldset'>
-            { this.props.formType === 'signup' && (
+            { formType === 'signup' && (
               <div>
                 <label htmlFor='userName' className='password-input-label input-label'>Username</label>
                 <input onChange={this.handleChange} name="userName" type='text' id='userName' className='form-input'></input>
@@ -69,12 +74,14 @@ class LoginPage extends Component {
             <input type='email' id='email-input' className='form-input' onChange={this.handleChange} name='email'></input>
             <label htmlFor='password-input' className='password-input-label input-label'>Password</label>
             <input type='password' id='password-input' className='form-input' onChange={this.handleChange} name='password'></input>
-            { this.props.formType === 'signup' && (
+            { formType === 'signup' && (
               <div>
                 <label htmlFor='confirm-password-input' className='password-input-label input-label'>Confirm Password</label>
                 <input onChange={this.handleChange} name="confirmPassword" type='password' id='confirm-password-input' className='form-input'></input>
               </div>
             )}
+
+            { this.state.error && <p className='login-error'>{errorText}</p>}
             <input type="submit" value="Submit" />
           </fieldset>
         </form>
@@ -89,7 +96,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signInUser: ({id, name, email}) => dispatch(currentUser(id, name, email))
+  signInUser: ({id, name, email}) => dispatch(currentUser(id, name, email)), 
+  changeForm: (text) => dispatch(formType(text))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
