@@ -8,6 +8,7 @@ import LoginPage from '../../components/LoginPage'
 import { fetchMovies } from '../../utils/apiFetches/fetchMovies';
 import { cleanMovies } from '../../utils/cleaners/cleanMovies'
 import { addMovies } from '../../actions/index'
+import MoviePage from '../../components/MoviePage'
 
 export class App extends Component {
   async componentDidMount() {
@@ -21,13 +22,14 @@ export class App extends Component {
     }
   }
 
+
   render() {
     return (
       <div className="App">
         <Header />
         <Route exact path='/' component={ Home } />
         <Route exact path='/login' component={ LoginPage } />
-        <Route path='/movies/:id' component={ MoviePage } />
+        <Route exact path='/movies/:id' component={ MoviePage } />
       </div>
     );
   }
