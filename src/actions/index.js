@@ -8,9 +8,9 @@ export const formType = (type) => ({
   form: type
 })
 
-export const currentUser = (id, name, email) => ({
+export const currentUser = (id, name, email, favorites) => ({
   type: 'CURRENT_USER',
-  userInfo: { id, name, email }
+  userInfo: { id, name, email, favorites }
 })
 
 export const selectedMovie = (movie) => ({
