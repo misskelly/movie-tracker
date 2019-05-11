@@ -1,0 +1,17 @@
+.movie-card {
+  display: inline-block;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  // border: 1px solid hsl(20, 3%, 54%);
+  box-shadow: 3px 2px 2px hsl(204, 42%, 27%);
+  position: relative;
+  color: hsl(0, 0%, 100%);
+}
+
+.poster-img {
+  position: relative;
+  // filter: brightness(30%);
+  object-fit: cover;
+  width: 100%;
+  // z-index: 0;
+}

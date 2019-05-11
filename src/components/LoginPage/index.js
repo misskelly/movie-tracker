@@ -80,7 +80,7 @@ class LoginPage extends Component {
                 <input onChange={this.handleChange} name="confirmPassword" type='password' id='confirm-password-input' className='form-input' autoComplete='new-password'></input>
               </div>
             )}
-
+            {/* REFACTOR create form component to render login and signup in different forms and include new passowrd autocomplete in both password fields */}
             { this.state.error && <p className='login-error'>{errorText}</p>}
             <input type="submit" value="Submit" />
           </fieldset>

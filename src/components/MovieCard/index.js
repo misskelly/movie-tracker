@@ -18,8 +18,14 @@ export class MovieCard extends Component {
   render() {
     const { card } = this.props;
     return (
-      <article key={card.id} className='movie-card'>
-      <img src={card.poster} alt={`Promotional movie poster for ${card.title}`} onClick={this.showMoreInfo}/>
+      <article 
+        key={card.id} 
+        className='movie-card'>
+      <img 
+        src={card.poster} 
+        alt={`Promotional movie poster for ${card.title}`} 
+        className='poster-img'
+        onClick={this.showMoreInfo}/>
     </article>
     )
   }
