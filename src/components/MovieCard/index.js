@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { fetchMovieInfo } from '../../thunks/fetchMovieInfo'
-import { key } from '../../apiKey'
-import { connect } from 'react-redux'
-
+import { key } from '../../apiKey';
 
 export class MovieCard extends Component {
   constructor() {
@@ -11,10 +8,11 @@ export class MovieCard extends Component {
       cardHover: false
     }
   }
-  showMoreInfo = (e) => {
-    const { card, fetchMovieInfo } = this.props;
-    const url = `https://api.themoviedb.org/3/movie/${card.id}?api_key=${key}&language=en-US`
-    fetchMovieInfo(url)
+  
+  showMoreInfo = () => {
+    const { card, moreInfo } = this.props;
+    const url = `https://api.themoviedb.org/3/movie/${card.id}?api_key=${key}&language=en-US`;
+    moreInfo(url);
   }
 
   render() {
@@ -27,9 +25,4 @@ export class MovieCard extends Component {
   }
 }
 
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchMovieInfo: (url) => dispatch(fetchMovieInfo(url))
-})  
-
-export default connect(null, mapDispatchToProps)(MovieCard)
+export default MovieCard;
