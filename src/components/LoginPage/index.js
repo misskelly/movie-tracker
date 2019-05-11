@@ -57,7 +57,7 @@ class LoginPage extends Component {
       : 'SIGN-UP';
     const errorText = formType === 'login'
       ? <p>Email and password do not match an account, check login info or {createActLink}</p>
-      : 'An account for this email already exists.'
+      : 'Email has already been used.'
     if (currentUser.name) return (<Redirect to='/'/>);
     return (
       <main className='login-page'>
