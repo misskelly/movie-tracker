@@ -24,9 +24,10 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        < Header />
-        < Route exact path='/' component={ Home } />
-        < Route exact path='/login' component={ LoginPage } />
+        <Header />
+        <Route exact path='/' component={ Home } />
+        <Route exact path='/login' component={ LoginPage } />
+        <Route path='/movies/:id' render={<MoviePage {...selectedMovie}/>} />
       </div>
     );
   }
