@@ -71,13 +71,13 @@ class LoginPage extends Component {
               </div>
             )}
             <label htmlFor='email-input' className='email-input-label input-label'>E-mail</label>
-            <input type='email' id='email-input' className='form-input' onChange={this.handleChange} name='email'></input>
+            <input type='email' id='email-input' className='form-input' onChange={this.handleChange} name='email' autoComplete='username'></input>
             <label htmlFor='password-input' className='password-input-label input-label'>Password</label>
-            <input type='password' id='password-input' className='form-input' onChange={this.handleChange} name='password'></input>
+            <input type='password' id='password-input' className='form-input' onChange={this.handleChange} name='password' autoComplete='current-password'></input>
             { formType === 'signup' && (
               <div>
                 <label htmlFor='confirm-password-input' className='password-input-label input-label'>Confirm Password</label>
-                <input onChange={this.handleChange} name="confirmPassword" type='password' id='confirm-password-input' className='form-input'></input>
+                <input onChange={this.handleChange} name="confirmPassword" type='password' id='confirm-password-input' className='form-input' autoComplete='new-password'></input>
               </div>
             )}
 
