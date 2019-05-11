@@ -12,3 +12,8 @@ export const currentUser = (id, name, email) => ({
   type: 'CURRENT_USER',
   userInfo: { id, name, email }
 })
+
+export const selectedMovie = (movie) => ({
+  type: 'SELECTED_MOVIE',
+  movie
+})
