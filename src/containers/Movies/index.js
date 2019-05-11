@@ -1,12 +1,10 @@
 import React from 'react'
-import { MovieCard } from '../../components/MovieCard'
+import MovieCard from '../../components/MovieCard'
 import { connect } from 'react-redux'
-import { fetchMovieInfo } from '../../thunks/fetchMovieInfo';
 
 const MoviesGallery = (props) => {
   const movies = props.movies.map(movie => 
     <MovieCard 
-      moreInfo={props.fetchInfo} 
       card={movie}
     />)
   return (
@@ -16,9 +14,8 @@ const MoviesGallery = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({movies: state.movies})
-const mapDispatchToProps = (dispatch) => ({
-  fetchInfo: (url) => dispatch(fetchMovieInfo(url))
+const mapStateToProps = (state) => ({
+  movies: state.movies
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesGallery)
+export default connect(mapStateToProps)(MoviesGallery)
