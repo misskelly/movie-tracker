@@ -27,7 +27,7 @@ export class App extends Component {
         <Header />
         <Route exact path='/' component={ Home } />
         <Route exact path='/login' component={ LoginPage } />
-        <Route path='/movies/:id' render={<MoviePage {...selectedMovie}/>} />
+        <Route path='/movies/:id' component={ MoviePage } />
       </div>
     );
   }

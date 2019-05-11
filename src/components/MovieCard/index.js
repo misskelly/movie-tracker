@@ -31,7 +31,7 @@ export class MovieCard extends Component {
         <button className='favorite-btn'>
           { card.favorite === true ? <img src={active} alt='Star icon for favorited movie'/> : <img src={inactive} alt='Star icon'/>}
         </button>
-        </div>
+      </div>
     </article>
     )
   }
