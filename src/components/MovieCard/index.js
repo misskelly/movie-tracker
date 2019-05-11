@@ -20,6 +20,8 @@ export class MovieCard extends Component {
     this.props.fetchInfo(url);
   }
 
+  
+
   render() {
     const { card } = this.props;
     return (
@@ -27,9 +29,9 @@ export class MovieCard extends Component {
         key={card.id} 
         className='movie-card'>
       <img 
-        src={card.poster} 
+        src={`https://image.tmdb.org/t/p/w500/${card.posterPath}`} 
         alt={`Promotional movie poster for ${card.title}`} 
-        className='poster-img'
+        className='poster-img'/>
        <div className='card-hover'>
         <h4 className='card-hover-heading'>{card.title}</h4>
         <Link to={`/movies/${card.id}`}>
