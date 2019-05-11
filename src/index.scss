@@ -1,7 +1,9 @@
 @import './containers/App/App';
 @import './containers/Header/Header';
+@import './containers/Movies/Movies';
 @import './components/LoginPage/LoginPage';
 @import './components/Banner/Banner';
+@import './components/MovieCard/MovieCard';
 
 * {
   box-sizing: border-box;

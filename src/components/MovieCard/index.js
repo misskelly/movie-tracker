@@ -23,9 +23,14 @@ export class MovieCard extends Component {
   render() {
     const { card } = this.props;
     return (
-      <article key={card.id} className='movie-card'>
-      <img src={card.poster} alt={`Promotional movie poster for ${card.title}`} />
-        <div className='card-hover'>
+      <article 
+        key={card.id} 
+        className='movie-card'>
+      <img 
+        src={card.poster} 
+        alt={`Promotional movie poster for ${card.title}`} 
+        className='poster-img'
+       <div className='card-hover'>
         <h4 className='card-hover-heading'>{card.title}</h4>
         <Link to={`/movies/${card.id}`}>
         <button onClick={this.showMoreInfo} className='more-info-btn'>More Info</button></Link>
