@@ -17,3 +17,8 @@ export const selectedMovie = (movie) => ({
   type: 'SELECTED_MOVIE',
   movie
 })
+
+export const updateFavorites = (favorite) => ({
+  type: 'UPDATE_FAVORITES',
+  favorite
+})

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { postUser } from '../../utils/apiFetches/postUser';
+import { fetchAnything } from '../../utils/apiFetches/fetchAnything';
 import { currentUser, formType } from '../../actions';
 import { Redirect } from 'react-router-dom';
+
+
 class LoginPage extends Component {
   constructor() {
     super();
@@ -26,14 +29,19 @@ class LoginPage extends Component {
     
     try {
       const response = await postUser(url, userInfo);
+      const favoritesUrl = `http://localhost:3000/api/users/${await response.data.id}/favorites`
+      const favorites = await fetchAnything(favoritesUrl)
+      // console.log(avorites)
       await this.props.formType === 'login' 
-      ? this.props.signInUser(response.data)
-      : this.props.signInUser({ id:response.id, email, name: userName });
+      ? this.props.signInUser({...response.data, favorites: favorites.data})
+      : this.props.signInUser({ id:response.id, email, name: userName});
       await this.setState({ error: false});
     } catch(error) {
       this.setState({ error: true })
     }
   }
+
+
   
   handleChange = ({target}) => {
     this.setState({ [target.name]: target.value })
@@ -96,7 +104,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signInUser: ({id, name, email}) => dispatch(currentUser(id, name, email)), 
+  signInUser: ({id, name, email, favorites}) => dispatch(currentUser(id, name, email, favorites)), 
   changeForm: (text) => dispatch(formType(text))
 })
 
