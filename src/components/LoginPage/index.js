@@ -153,8 +153,8 @@ class LoginPage extends Component {
         Create Account
       </span>)
     const errorText = formType === 'login'
-    ? <p>Email and password do not match an account, check login info or {createActLink}</p>
-    : 'Email has already been used.'
+      ? <p>Email and password do not match an account, check login info or {createActLink}</p>
+      : 'Email has already been used.'
     return (
       <main className='login-page'>
         <h2>{ formType === 'login' ? 'LOGIN' : 'SIGN-UP' }</h2> 
