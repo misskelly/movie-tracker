@@ -24,7 +24,7 @@ const Banner = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  posters: state.movies.map(movie => `https://image.tmdb.org/t/p/w500/${movie.posterPath}`)
+  posters: state.movies.map(movie => `https://image.tmdb.org/t/p/w500/${movie.poster_path}`)
 })
 
 export default connect(mapStateToProps)(Banner);

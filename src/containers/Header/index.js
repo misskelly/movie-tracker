@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'; 
-import { formType, currentUser }  from '../../actions/index'
+import { formType, currentUser, showFavorites }  from '../../actions/index'
 
 export class Header extends Component {
   handleClick = ({target}) => {
     target.textContent === 'Log-in' 
       ? this.props.formType('login')
       : this.props.formType('signup')
-    target.textContent === 'Log-out' && this.props.logOutUser()
+    switch(target.textContent) {
+      case 'Log-out':
+        this.props.logOutUser()
+        break;
+      case 'Favorites':
+        this.props.showFavorites(true)
+        break;
+      default:
+      this.props.showFavorites(false)
+    }
   }
 
   render() {
@@ -19,16 +28,16 @@ export class Header extends Component {
       </div>
     )
     return(
-      <header className='header'>
-        <NavLink to='/' className='nav'> Home </NavLink>
+      <header className='header' onClick={ this.handleClick }>
+        <NavLink to='/' className='nav'>
+          Home 
+        </NavLink>
         { name && userInfo}
-        <NavLink to={`${name ? '/favorites' : '/login'}`} className='nav'>
-          <span onClick={this.handleClick}>{`${ name ? 'Favorites' : 'Create Account'}`}
-          </span>
+        <NavLink to={`${name ? '/' : '/login'}`} className='nav'>
+            {`${ name ? 'Favorites' : 'Create Account'}`}
         </NavLink>
         <NavLink to={`${name ? '/' : '/login'}`} className='nav' >
-          <span onClick={this.handleClick}>{`${ name ? 'Log-out' : 'Log-in'}`}
-          </span>
+            {`${ name ? 'Log-out' : 'Log-in'}`}
         </NavLink>
       </header>
     )
@@ -41,7 +50,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   formType: (text) => dispatch(formType(text)),
-  logOutUser: () => dispatch(currentUser())
+  logOutUser: () => dispatch(currentUser()),
+  showFavorites: (bool) => dispatch(showFavorites(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

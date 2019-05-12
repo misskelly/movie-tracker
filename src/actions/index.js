@@ -22,3 +22,8 @@ export const updateFavorites = (favorite) => ({
   type: 'UPDATE_FAVORITES',
   favorite
 })
+
+export const showFavorites = (bool) => ({
+  type: 'SHOW_FAVORITES',
+  isShown: bool
+})
