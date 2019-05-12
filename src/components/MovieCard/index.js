@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchMovieInfo } from '../../thunks/fetchMovieInfo'
-import { postFavorite } from '../../thunks/postFavorite.js'
+// import { postFavorite } from '../../thunks/postFavorite.js'
 import { updateFavorites } from '../../actions/index.js'
 import { key } from '../../apiKey'
 import { connect } from 'react-redux';
@@ -12,45 +12,49 @@ export class MovieCard extends Component {
   constructor() {
     super();
     this.state = {
-      cardHover: false
+      cardHover: false,
+      loginPrompt: false
     }
   }
   
   showMoreInfo = () => {
-    const { card, moreInfo } = this.props;
-    const url = `https://api.themoviedb.org/3/movie/${card.id}?api_key=${key}&language=en-US`;
+    const { card } = this.props;
+    const url = `https://api.themoviedb.org/3/movie/${card.movie_id}?api_key=${key}&language=en-US`;
     this.props.fetchInfo(url);
   }
 
   toggleFavorite = () => {
-    const { id, title, posterPath, releaseDate, voteAverage, overview } = this.props.card
+    const { movie_id, title, poster_path, release_date, vote_average, overview } = this.props.card
     const body = {
-      movie_id: id,
+      movie_id,
       user_id: this.props.userId,
-      title, 
-      poster_path: posterPath,
-      release_date: releaseDate,
-      vote_average: voteAverage,
+      title,
+      poster_path,
+      release_date,
+      vote_average,
       overview
     }
-    this.props.updateFavorites(body)
-    this.props.postFavorite(body)
+    if (this.props.userId) {
+      this.props.updateFavorites(body)
+      this.setState({ loginPrompt: false })
+    } else {
+      this.setState({ loginPrompt: !this.state.loginPrompt })
+    }
   }
-
 
   render() {
     const { card } = this.props;
     return (
       <article 
-        key={card.id} 
+        key={card.movie_id} 
         className='movie-card'>
       <img 
-        src={`https://image.tmdb.org/t/p/w500/${card.posterPath}`} 
+        src={`https://image.tmdb.org/t/p/w500/${card.poster_path}`} 
         alt={`Promotional movie poster for ${card.title}`} 
         className='poster-img'/>
        <div className='card-hover'>
         <h4 className='card-hover-heading'>{card.title}</h4>
-        <Link to={`/movies/${card.id}`}>
+        <Link to={`/movies/${card.movie_id}`}>
           <button 
             onClick={this.showMoreInfo} 
             className='more-info-btn'>
@@ -60,10 +64,12 @@ export class MovieCard extends Component {
         <button 
           className='favorite-btn'
           onClick={this.toggleFavorite}>
-          { card.favorite === true 
+          { card.favorite 
             ? <img src={active} alt='Star icon for favorited movie'/> 
             : <img src={inactive} alt='Star icon'/>}
         </button>
+          { this.state.loginPrompt && 
+            (<p>Please login to Favorite this card</p>)}
       </div>
     </article>
     )
@@ -71,12 +77,12 @@ export class MovieCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  userId: state.currentUser.id
+  userId: state.currentUser.id,
+  userFavorites: state.currentUser.favorites || []
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchInfo: (url) => dispatch(fetchMovieInfo(url)),
-  postFavorite: (body) => dispatch(postFavorite(body)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie))
 })
 

@@ -31,7 +31,6 @@ class LoginPage extends Component {
       const response = await postUser(url, userInfo);
       const favoritesUrl = `http://localhost:3000/api/users/${await response.data.id}/favorites`
       const favorites = await fetchAnything(favoritesUrl)
-      // console.log(avorites)
       await this.props.formType === 'login' 
       ? this.props.signInUser({...response.data, favorites: favorites.data})
       : this.props.signInUser({ id:response.id, email, name: userName});

@@ -9,5 +9,4 @@ export const postFavorite = (body) => {
       throw new Error(error, 'Failed to post favorite')
     }
   }
-
 }
