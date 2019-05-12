@@ -7,7 +7,7 @@ export const fetchMovieInfo = (url) => {
       const movieInfo = await fetchAnything(url)
       dispatch(selectedMovie(movieInfo))
     } catch(error) {
-      throw new Error(error, 'Problem getting movie info :(')
+      throw new Error('Problem getting movie info :(')
     }
   }
 }
