@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchMovieInfo } from '../../thunks/fetchMovieInfo'
 import { postFavorite } from '../../thunks/postFavorite.js'
+import { updateFavorites } from '../../actions/index.js'
 import { key } from '../../apiKey'
 import { connect } from 'react-redux';
 import active from '../../images/active.svg'
@@ -32,6 +33,7 @@ export class MovieCard extends Component {
       vote_average: voteAverage,
       overview
     }
+    this.props.updateFavorites(body)
     this.props.postFavorite(body)
   }
 
@@ -74,7 +76,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchInfo: (url) => dispatch(fetchMovieInfo(url)),
-  postFavorite: (body) => dispatch(postFavorite(body))
+  postFavorite: (body) => dispatch(postFavorite(body)),
+  updateFavorites: (movie) => dispatch(updateFavorites(movie))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
