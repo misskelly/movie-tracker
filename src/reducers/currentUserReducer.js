@@ -1,3 +1,4 @@
+import { deleteFavorite } from '../utils/apiFetches/deleteFavorite'
 const initialState = {}
 
 export const currentUserReducer = (state = initialState, action) => {
@@ -6,11 +7,11 @@ export const currentUserReducer = (state = initialState, action) => {
       console.log(action.userInfo)
       return {...state, ...action.userInfo};
     case 'UPDATE_FAVORITES':
-    console.log(state.favorites)
-      const newFavorites = state.favorites.some(fav => fav.movie_id === action.favorite.movie_id) 
-        ? {...state, favorites: state.favorites.filter(movie => movie.movie_id !== action.favorite.movie_id) }
+      const favId = action.favorite.movie_id
+      state.favorites.some(fav => fav.movie_id === favId) && deleteFavorite(state.id, favId)
+      const newFavorites = state.favorites.some(fav => fav.movie_id === favId) 
+        ? {...state, favorites: state.favorites.filter(movie => movie.movie_id !== favId) }
         : {...state, favorites: state.favorites.concat(action.favorite) }
-      console.log(newFavorites)
       return newFavorites
     default: 
       return state;
