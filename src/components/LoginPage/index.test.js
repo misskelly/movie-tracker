@@ -37,16 +37,18 @@ describe('LoginPage', () => {
     email: '',
     favorites: []
   }
-
+  const mockSignInUser = jest.fn();
   fetchAnything.mockImplementation(() => ({ data: mockFavoriteMovies }))  
-
   let wrapper;
+  let setStateSpy;
   beforeEach(() => {
     wrapper = shallow(
       < LoginPage 
         currentUser={mockCurrentUser}  />
     )
+    setStateSpy = jest.spyOn(wrapper.instance(), 'setState')
   })
+
   it('should have set default state', () => {
     expect(wrapper.state()).toEqual(defaultState);
   })
@@ -146,8 +148,65 @@ describe('LoginPage', () => {
       })
     })
 
-    it('should signInUser with successfull login', () => {
-      
+    it('should dispatch signInUser action correct params with login formType', async () => {
+      wrapper = shallow(
+        < LoginPage 
+          currentUser={ mockCurrentUser }
+          formType={ mockLoginFormType }
+          signInUser={ mockSignInUser }  />
+      )
+      wrapper.setState({...mockUserInput })
+      postUser.mockImplementation(() => ({
+        data: {
+          id: 1,
+          email: 'nim@sum.com', 
+          name: 'Nim'
+        }
+      }))
+      await wrapper.instance().submitUserData();
+      await expect(mockSignInUser).toHaveBeenCalledWith({
+        id: 1,
+        email: 'nim@sum.com', 
+        name: 'Nim',
+        favorites: mockFavoriteMovies
+      })
+    })
+
+    it('should dispatch signInUser action correct params with signup formType', async () => {
+      wrapper = shallow(
+        < LoginPage 
+          currentUser={ mockCurrentUser }
+          formType={ mockSignUpFormType }
+          signInUser={ mockSignInUser }  />
+      )
+      wrapper.setState({...mockUserInput })
+      postUser.mockImplementation(() => ({ id: 1 }))
+      await wrapper.instance().submitUserData();
+      await expect(mockSignInUser).toHaveBeenCalledWith({
+        id: 1,
+        email: 'nim@sum.com', 
+        name: 'Nim',
+        favorites: []
+      })
+    })
+
+    it('should setState error true if login/signup fails', async () => {
+      postUser.mockImplementation(() => (Promise.reject()))
+      await wrapper.instance().submitUserData();
+      await expect(wrapper.state().error).toEqual(true)
+    })
+
+    it('should setState error false if login/signup is good', async () => {
+      wrapper = shallow(
+        < LoginPage 
+        currentUser={ mockCurrentUser }
+        formType={ mockSignUpFormType }
+        signInUser={ mockSignInUser }  />
+        )
+      wrapper.setState({...mockUserInput, error: true });
+      postUser.mockImplementation(() => Promise.resolve({}))
+      await wrapper.instance().submitUserData();
+      await expect(wrapper.state().error).toEqual(false)
     })
   })
 })
