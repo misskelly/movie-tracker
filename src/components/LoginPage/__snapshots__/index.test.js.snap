@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage should match component snapshot with login formtype 1`] = `
+<main
+  className="login-page"
+>
+  <h2>
+    LOGIN
+  </h2>
+  <form
+    className="login-form"
+    onSubmit={[Function]}
+  >
+    <fieldset
+      className="login-fieldset"
+    >
+      <div
+        className="sign-in-inputs"
+      >
+        <label
+          className="email-input-label input-label"
+          htmlFor="email-input"
+        >
+          E-mail
+        </label>
+        <input
+          autoComplete="username"
+          className="form-input"
+          id="email-input"
+          name="email"
+          onChange={[Function]}
+          type="email"
+        />
+        <label
+          className="password-input-label  input-label"
+          htmlFor="password-input"
+        >
+          Password
+        </label>
+        <input
+          autoComplete="current-password"
+          className="form-input"
+          id="password-input"
+          name="password"
+          onChange={[Function]}
+          type="password"
+        />
+      </div>
+      <input
+        type="submit"
+        value="Submit"
+      />
+    </fieldset>
+  </form>
+</main>
+`;
+
+exports[`LoginPage should match component snapshot with signup formtype 1`] = `
+<main
+  className="login-page"
+>
+  <h2>
+    SIGN-UP
+  </h2>
+  <form
+    className="login-form"
+    onSubmit={[Function]}
+  >
+    <fieldset
+      className="login-fieldset"
+    >
+      <div
+        className="signup-form-inputs"
+      >
+        <label
+          className="sign-up input-label"
+          htmlFor="userName"
+        >
+          Username
+        </label>
+        <input
+          className="sign-up form-input"
+          id="userName"
+          name="userName"
+          onChange={[Function]}
+          type="text"
+        />
+        <label
+          className="sign-up input-label"
+          htmlFor="email-input"
+        >
+          E-mail
+        </label>
+        <input
+          className="sign-up form-input"
+          id="email-input"
+          name="email"
+          onChange={[Function]}
+          type="email"
+        />
+        <label
+          className="sign-up input-label"
+          htmlFor="password-input"
+        >
+          Password
+        </label>
+        <input
+          className="sign-up form-input"
+          id="password-input"
+          name="password"
+          onChange={[Function]}
+          type="password"
+        />
+        <label
+          className="sign-up input-label"
+          htmlFor="confirm-password-input"
+        >
+          Confirm Password
+        </label>
+        <input
+          className="sign-up form-input"
+          id="confirm-password-input"
+          name="confirmPassword"
+          onChange={[Function]}
+          type="password"
+        />
+      </div>
+      <input
+        type="submit"
+        value="Submit"
+      />
+    </fieldset>
+  </form>
+</main>
+`;
