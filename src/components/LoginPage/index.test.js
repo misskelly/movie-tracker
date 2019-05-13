@@ -16,6 +16,13 @@ describe('LoginPage', () => {
   const logInUrl = 'http://localhost:3000/api/users';
   const signUpUrl = 'http://localhost:3000/api/users/new';
   const mockFavoriteMovies = [{ id: 1, movie_title: 'Avengers Infinity War' }]
+  const mockEvent = {
+    target: {
+      name: 'name',
+      value: 'Nim'
+    },
+    preventDefault: () => {}
+  }
   const mockUserInput = {
       password: '123',
       email: 'nim@sum.com',
@@ -37,20 +44,53 @@ describe('LoginPage', () => {
     email: '',
     favorites: []
   }
-  const mockSignInUser = jest.fn();
   fetchAnything.mockImplementation(() => ({ data: mockFavoriteMovies }))  
+  const mockSignInUser = jest.fn();
   let wrapper;
-  let setStateSpy;
   beforeEach(() => {
     wrapper = shallow(
       < LoginPage 
         currentUser={mockCurrentUser}  />
     )
-    setStateSpy = jest.spyOn(wrapper.instance(), 'setState')
   })
 
   it('should have set default state', () => {
     expect(wrapper.state()).toEqual(defaultState);
+  })
+
+  it('should set state user input', () => {
+    wrapper.instance().handleChange(mockEvent);
+    expect(wrapper.state().name).toEqual('Nim');
+  })
+
+  it('should submitUserData if login inputs are valid', () => {
+    wrapper = shallow(
+      < LoginPage 
+        currentUser={ mockCurrentUser }
+        formType={ mockLoginFormType }  />
+    )
+    let submitUserDataSpy = jest.spyOn(wrapper.instance(), 'submitUserData')
+    wrapper.setState({...mockUserInput });
+    wrapper.instance().handleSubmit(mockEvent);
+    expect(submitUserDataSpy).toHaveBeenCalledTimes(1);
+  })
+
+  it('should submitUserData if signup inputs are valid', () => {
+    wrapper = shallow(
+      < LoginPage 
+        currentUser={ mockCurrentUser }
+        formType={ mockSignUpFormType }  />
+    )
+    let submitUserDataSpy = jest.spyOn(wrapper.instance(), 'submitUserData')
+    wrapper.setState({...mockUserInput });
+    wrapper.instance().handleSubmit(mockEvent);
+    expect(submitUserDataSpy).toHaveBeenCalledTimes(1);
+  })
+
+  it('should setState passwordMismatch true if inputs invalid', () => {
+    wrapper.setState({ password: '1234', confirmPassword: '12' });
+    wrapper.instance().handleSubmit(mockEvent);
+    expect(wrapper.state().passwordMismatch).toEqual(true);
   })
 
   it('should match component snapshot with login formtype', () => {
