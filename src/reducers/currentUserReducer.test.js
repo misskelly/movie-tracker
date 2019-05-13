@@ -4,9 +4,10 @@ import { mockUser } from '../utils/mockData.js'
 import { deleteFavorite } from '../utils/apiFetches/deleteFavorite';
 import { postUser } from '../utils/apiFetches/postUser';
 
+jest.mock('../utils/apiFetches/deleteFavorite')
+jest.mock('../utils/apiFetches/postUser')
+
 describe('currentUserReducer', () => {
-  // jest.mock(deleteFavorite)
-  // jest.mock(postUser)
   beforeEach(() => {
     // jest.mock(mockPostUser = jest.fn()
     // mockDeleteFavorite = jest.fn()
@@ -45,9 +46,29 @@ describe('currentUserReducer', () => {
   });
 
   
+  //TODO: 
+  // mock imported functions
+  // add expect post user thbcw url and new fav
+  //test existing fav, 
+  //add expect deleteFav thbcw state.id and favId
 });
 
-
+// beforeEach(() => {
+//   mockUrl = 'someUrl.com';
+//   mockStaff = [{
+//     name: 'christie',
+//     info: 'some info'
+//   }, {
+//     name: 'leta',
+//     info: 'some info'
+//   }];
+//   mockDispatch = jest.fn();
+//   window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+//     ok: true,
+//     bio: mockStaff
+//   }));
+//   thunk = fetchStaff(mockUrl);
+// });
 //   it('should return the state with a new todo', () => {
 //         const text = 'learn redux'; 
 //         const id = 1;
