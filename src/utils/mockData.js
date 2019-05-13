@@ -28,3 +28,15 @@ export const mockLatestMovie = [{
   "vote_average": 0,
   "vote_count": 0
 }]
+
+export const mockUser = {
+  id: 1,
+  name: "misskelly",
+  email: "kelly@kelly.com",
+  favorites: [{
+    id: 2,
+    movie_id: 287947,
+    user_id: 1,
+    title: "Shazam!",
+  }]
+}
