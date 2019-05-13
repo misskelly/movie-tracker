@@ -6,7 +6,7 @@ import { currentUser, formType } from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,7 +14,8 @@ class LoginPage extends Component {
       email: '',
       confirmPassword: '',
       userName: '',
-      error: false
+      error: false,
+      passwordMismatch: false
     }
   }
 
@@ -49,7 +50,7 @@ class LoginPage extends Component {
   }
 
   handleChange = ({target}) => {
-    this.setState({ [target.name]: target.value })
+    this.setState({ [target.name]: target.value, passwordMismatch: false })
   } 
   
   handleSubmit = (e) => {
@@ -60,6 +61,8 @@ class LoginPage extends Component {
     } else {
       (email.length && password.length && confirmPassword === password && userName.length) && this.submitUserData();
     }
+    const passwordMismatch = password !== confirmPassword;
+    this.setState({ passwordMismatch })
   }
   
   render() {
@@ -161,6 +164,7 @@ class LoginPage extends Component {
         <form className='login-form' onSubmit={this.handleSubmit}>
           <fieldset className='login-fieldset'>
             { formType === 'login' ? signInInputs : signUpInputs }
+            { this.state.passwordMismatch &&  <p>Passwords do not match</p>}
             { this.state.error && <p className='login-error'>{errorText}</p>}
             <input type="submit" value="Submit" />
           </fieldset>
@@ -170,12 +174,12 @@ class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   formType: state.formType,
   currentUser: state.currentUser
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   signInUser: ({id, name, email, favorites}) => 
     dispatch(currentUser(id, name, email, favorites)), 
   changeForm: (text) => dispatch(formType(text))
