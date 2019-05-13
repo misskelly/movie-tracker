@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home should match component snapshot 1`] = `ShallowWrapper {}`;
+exports[`Home should match component snapshot 1`] = `
+<section
+  className="home-section"
+>
+  <ConnectFunction />
+  <ConnectFunction />
+</section>
+`;
