@@ -44,7 +44,8 @@ describe('LoginPage', () => {
     email: '',
     favorites: []
   }
-  fetchAnything.mockImplementation(() => ({ data: mockFavoriteMovies }))  
+  fetchAnything.mockImplementation(() => ({ data: mockFavoriteMovies })) 
+  const mockDispatch = jest.fn(); 
   const mockSignInUser = jest.fn();
   let wrapper;
   beforeEach(() => {
@@ -155,6 +156,41 @@ describe('LoginPage', () => {
     const result = await wrapper.instance().fetchUserFavorites(mockUserId);
     expect(fetchAnything).toHaveBeenCalledWith("http://localhost:3000/api/users/1/favorites");
     expect(result).toEqual(mockFavoriteMovies);
+  })
+
+  describe('mapStateToProps', () => {
+    const mockState = {
+      formType: 'login',
+      currentUser: {
+        id: 1,
+        email: 'nim@sum.com', 
+        name: 'Nim',
+        favorites: mockFavoriteMovies
+      }
+    }
+    it('should return a formType and current user object', () => {
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(mockState);
+    })
+  })
+
+  describe('mapDispatchToProps', () => {
+    const mockSignIn = {
+      id: 1,
+      name: 'Nim',
+      email: 'nim@sum.com',
+      favorites: []
+    }
+    const { id, name, email, favorites } = mockSignIn;
+    it('should dispatch when using a function from MDTP', () => {
+      const dispatchSignInUser = currentUser(id, name, email, favorites)
+      const dispatchChangeForm = formType('login')
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      mappedProps.signInUser(mockSignIn);
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchSignInUser);
+      mappedProps.changeForm('login');
+      expect(mockDispatch).toHaveBeenCalledWith(dispatchChangeForm);
+    })
   })
 
   describe('submitUserData', () => {
