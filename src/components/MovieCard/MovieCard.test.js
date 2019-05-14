@@ -80,9 +80,10 @@ describe('MovieCard', () => {
   })
 
   it.skip('should invoke showmoreinfo on click', () => {
-    const spyOnShowMoreInfo = jest.spyOn(wrapper.instance(), 'showMoreInfo')
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'showMoreInfo')
     wrapper.find('.more-info-btn').simulate('click')
-    expect(spyOnShowMoreInfo).toHaveBeenCalledTimes(1)
+    expect(instance.showMoreInfo).toHaveBeenCalledTimes(1)
   })
 
   it.skip('should invoke toggleFavorite on click', () => {
@@ -126,21 +127,3 @@ describe('MovieCard', () => {
 
   })
 })
-// describe('mapDispatchToProps', () => {
-//   const mockSignIn = {
-//     id: 1,
-//     name: 'Nim',
-//     email: 'nim@sum.com',
-//     favorites: []
-//   }
-//   const { id, name, email, favorites } = mockSignIn;
-//   it('should dispatch when using a function from MDTP', () => {
-//     const dispatchSignInUser = currentUser(id, name, email, favorites)
-//     const dispatchChangeForm = formType('login')
-//     const mappedProps = mapDispatchToProps(mockDispatch)
-//     mappedProps.signInUser(mockSignIn);
-//     expect(mockDispatch).toHaveBeenCalledWith(dispatchSignInUser);
-//     mappedProps.changeForm('login');
-//     expect(mockDispatch).toHaveBeenCalledWith(dispatchChangeForm);
-//   })
-// })
