@@ -1,14 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MoviesGallery, mapStateToProps } from './index';
-import { showFavorites } from '../../actions';
 import { mockMovies, mockUser } from '../../utils/mockData'
 
 describe('MoviesGallery', () => {
-  let mockFavMovieIds;
-  let mockMovies;
-  let mockShowMovies;
-  let mockMovieCard;
+  let mockShowFavorites;
+  let wrapper;
+  
+  beforeEach(() => {
+    mockShowFavorites = jest.fn()
+    wrapper = shallow(<MoviesGallery favorites={mockUser.favorites} movies={mockMovies} showFavorites={mockShowFavorites}/>)
+  });
+
+  it('should match snapshot', () => {
+    
+    expect(wrapper).toMatchSnapshot();
+
+  });
+
 });
 
 describe('mapStateToProps', () => {
