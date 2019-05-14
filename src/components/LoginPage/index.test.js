@@ -193,6 +193,30 @@ describe('LoginPage', () => {
     })
   })
 
+  it('should trigger submit form on click', () => {
+    wrapper = shallow(
+      < LoginPage 
+      currentUser={ mockCurrentUser }
+      formType={ mockSignInUser } />
+      )
+    const spyOnHandleSubmit = jest.spyOn(wrapper.instance(),'handleSubmit')
+    wrapper.find('#login-signup-submit-btn').simulate('click', () => { 
+      expect(spyOnHandleSubmit).toHaveBeenCalledTimes(1);
+    })
+  })
+
+  it.skip('should trigger signup form change on click', () => {
+    wrapper = shallow(
+      < LoginPage 
+      currentUser={ mockCurrentUser }
+      changeForm={ mockDispatch } />
+      )
+    wrapper.setState({ error: true })
+    wrapper.find('.signup-link').simulate('click', () => { 
+      expect(mockDispatch).toHaveBeenCalledTimes('signup');
+    })
+  })
+
   describe('submitUserData', () => {
     
     it('should fetch post request for user login using correct params', () => {

@@ -166,7 +166,7 @@ export class LoginPage extends Component {
             { formType === 'login' ? signInInputs : signUpInputs }
             { this.state.passwordMismatch &&  <p>Passwords do not match</p>}
             { this.state.error && <p className='login-error'>{errorText}</p>}
-            <input type="submit" value="Submit" />
+            <input id='login-signup-submit-btn' type="submit" value="Submit" />
           </fieldset>
         </form>
       </main>
