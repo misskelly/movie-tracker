@@ -1,17 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './index.js'
+import { App, mapStateToProps, mapDispatchToProps } from '../App';
 import { shallow } from 'enzyme'
+import { mockMovies, mockUser } from '../../utils/mockData'
+import { addMovies } from '../../actions/index'
+
+
+jest.mock('../../actions/index')
 
 describe('App', () => {
   let wrapper
-
+  let mockAddMovies
   beforeEach(() => {
-    wrapper = shallow(<App />)
+
+    mockAddMovies = jest.mock()
+    wrapper = shallow(
+      <App 
+        movies={mockMovies}
+        addMovies={mockAddMovies}
+       />
+    )
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve(mockMovies)
+    }))
   });
 
-  it.skip('should match snapshot', () => {
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+});
+
+describe('mapStateToProps', () => {
+  it('should return a props object with movies', () => {
+    const mockState = { movies: mockMovies}
+    const expected = { movies: mockState.movies }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+
+  });
+});
+
+describe('mapDispatchToProps', () => {
+  
+  it('calls dispatch with add movies action', () => {
+    const dispatch = jest.fn()
+    const actionToDispatch = addMovies(mockMovies)  
+    mapDispatchToProps(dispatch(actionToDispatch))
+    expect(dispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+    
 });
