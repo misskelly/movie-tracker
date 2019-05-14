@@ -61,7 +61,7 @@ export class LoginPage extends Component {
     } else {
       (email.length && password.length && confirmPassword === password && userName.length) && this.submitUserData();
     }
-    const passwordMismatch = password !== confirmPassword;
+    const passwordMismatch = this.props.formType === 'signup' && password !== confirmPassword;
     this.setState({ passwordMismatch })
   }
   
@@ -166,7 +166,7 @@ export class LoginPage extends Component {
             { formType === 'login' ? signInInputs : signUpInputs }
             { this.state.passwordMismatch &&  <p>Passwords do not match</p>}
             { this.state.error && <p className='login-error'>{errorText}</p>}
-            <input type="submit" value="Submit" />
+            <input id='login-signup-submit-btn' type="submit" value="Submit" />
           </fieldset>
         </form>
       </main>
@@ -186,4 +186,3 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
-

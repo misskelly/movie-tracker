@@ -47,6 +47,7 @@ exports[`LoginPage should match component snapshot with login formtype 1`] = `
         />
       </div>
       <input
+        id="login-signup-submit-btn"
         type="submit"
         value="Submit"
       />
@@ -126,6 +127,7 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
         />
       </div>
       <input
+        id="login-signup-submit-btn"
         type="submit"
         value="Submit"
       />

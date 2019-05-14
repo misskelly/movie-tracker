@@ -33,6 +33,7 @@ export class MovieCard extends Component {
       vote_average,
       overview
     }
+    
     if (this.props.userId) {
       this.props.updateFavorites(body)
       this.setState({ loginPrompt: false })
@@ -75,12 +76,12 @@ export class MovieCard extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   userId: state.currentUser.id,
   userFavorites: state.currentUser.favorites || []
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   fetchInfo: (url) => dispatch(fetchMovieInfo(url)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie))
 })
