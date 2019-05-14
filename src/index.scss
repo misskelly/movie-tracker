@@ -1,6 +1,8 @@
+@import './variables';
 @import './containers/App/App';
 @import './containers/Header/Header';
 @import './containers/Movies/Movies';
+@import './containers/MoviePage/MoviePage';
 @import './components/LoginPage/LoginPage';
 @import './components/Banner/Banner';
 @import './components/MovieCard/MovieCard';

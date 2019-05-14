@@ -1,0 +1,36 @@
+.movie-page-container {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+    "banner banner"
+    "poster text"
+    ". text"
+}
+
+.movie-banner-wrapper {
+  grid-area: banner;
+  width: 100%;
+}
+
+.movie-banner-img {
+  width: 100%;
+  position: cover;
+}
+
+.poster-container {
+  grid-area: poster;
+}
+
+.movie-poster-img {
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.movie-text-container {
+  grid-area: text;
+  padding: 2rem;
+}
+
+.overview-text {
+  text-align: justify;
+}
