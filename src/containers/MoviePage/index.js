@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 export const MoviePage = (props) =>  {
@@ -9,14 +10,14 @@ export const MoviePage = (props) =>  {
       <article className='movie-banner-wrapper'>
         <img 
           src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}  
-          alt={`Promotional image from ${title}`} 
+          alt={`Promotional poster from ${title}`} 
           className='movie-banner-img'
           />
       </article>
       <article className='poster-container'>
           <img 
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}  
-            alt={`Promotional image from ${title}`} 
+            alt={`Promotional poster from ${title}`} 
             className='movie-poster-img'/>
       </article>
       <article className='movie-text-container'>
@@ -32,5 +33,9 @@ export const MoviePage = (props) =>  {
 export const mapStateToProps = (state) => ({
   movie: state.selectedMovie
 })
+
+MoviePage.propTypes = {
+  movie: PropTypes.object
+}
 
 export default connect(mapStateToProps)(MoviePage)
