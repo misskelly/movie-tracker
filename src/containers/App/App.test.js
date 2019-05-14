@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { App, mapStateToProps, mapDispatchToProps } from '../App';
 import { shallow } from 'enzyme'
-import { mockMovies, mockUser } from '../../utils/mockData'
+import { mockMovies } from '../../utils/mockData'
 import { addMovies } from '../../actions/index'
 
 

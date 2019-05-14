@@ -44,11 +44,11 @@ export class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   currentUser: state.currentUser
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   formType: (text) => dispatch(formType(text)),
   logOutUser: () => dispatch(currentUser()),
   showFavorites: (bool) => dispatch(showFavorites(bool))
