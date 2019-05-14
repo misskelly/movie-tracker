@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { cleanMovies } from '../../utils/cleaners/cleanMovies'
 
 export const MoviePage = (props) =>  {
   const { title, backdrop_path, overview, poster_path, release_date, vote_average } = props.movie;
