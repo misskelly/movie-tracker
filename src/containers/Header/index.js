@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'; 
-import { formType, currentUser, showFavorites }  from '../../actions/index'
+import { formType, currentUser, showFavorites }  from '../../actions/index';
+import film from '../../images/film.png'
+
 
 export class Header extends Component {
   handleClick = ({target}) => {
@@ -21,24 +23,37 @@ export class Header extends Component {
   }
 
   render() {
-    const { name, email } = this.props.currentUser;
+    const { name } = this.props.currentUser;
     const userInfo = (
       <div>
-        <h3>{`Yo watup ${name}`}</h3>
+        <h3 className='user-greeting'>{`Hello ${name}`}</h3>
       </div>
     )
     return(
       <header className='header' onClick={ this.handleClick }>
-        <NavLink to='/' className='nav'>
-          Home 
-        </NavLink>
-        { name && userInfo}
-        <NavLink to={`${name ? '/' : '/login'}`} className='nav'>
+        <article className='logo-wrapper'>
+          <h2 className='icon-text'>MT</h2>
+          <img 
+            src={film} 
+            alt='film with star icon' className='film-icon'/>
+        </article>
+        <nav>
+          <NavLink 
+            to='/' 
+            className='nav'>
+            Home 
+          </NavLink>
+          { name && userInfo}
+          <NavLink 
+            to={`${name ? '/' : '/login'}`}
+            className='nav'>
             {`${ name ? 'Favorites' : 'Create Account'}`}
-        </NavLink>
-        <NavLink to={`${name ? '/' : '/login'}`} className='nav' >
+          </NavLink>
+          <NavLink 
+            to={`${name ? '/' : '/login'}`} className='nav' >
             {`${ name ? 'Log-out' : 'Log-in'}`}
-        </NavLink>
+          </NavLink>
+        </nav>
       </header>
     )
   }
