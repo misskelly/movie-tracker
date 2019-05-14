@@ -11,6 +11,11 @@ exports[`App should match snapshot 1`] = `
     path="/"
   />
   <Route
+    component={[Function]}
+    exact={true}
+    path="/favorites"
+  />
+  <Route
     component={
       Object {
         "$$typeof": Symbol(react.memo),

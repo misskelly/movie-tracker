@@ -15,7 +15,7 @@ export const Banner = (props) => {
 
   return (
     <section className='banner-section'>
-      <h1 className='banner-heading'>MovieTracker</h1>
+      <h1 className='banner-heading'>{props.showFavs ? 'Favorites' : 'MovieTracker'}</h1>
       <div className='movie-tiles'>
         {movieTiles}
       </div>
@@ -23,8 +23,9 @@ export const Banner = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  posters: state.movies.map(movie => `https://image.tmdb.org/t/p/w500/${movie.poster_path}`)
+export const mapStateToProps = (state) => ({
+  posters: state.movies.map(movie => `https://image.tmdb.org/t/p/w500/${movie.poster_path}`),
+  showFavs: state.showFavorites
 })
 
 export default connect(mapStateToProps)(Banner);

@@ -21,6 +21,7 @@ export const MoviesGallery = (props) => {
   return (
     <section className='movies-section'>
       {movieCards}
+      { props.favorites.length === 0 && <h2>No Favorites Yet</h2>}
     </section>
   )
 }

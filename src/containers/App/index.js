@@ -28,6 +28,7 @@ export class App extends Component {
       <div className="App">
         <Header />
         <Route exact path='/' component={ Home } />
+        <Route exact path='/favorites' component={ Home } />
         <Route exact path='/login' component={ LoginPage } />
         <Route exact path='/movies/:id' component={ MoviePage } />
       </div>

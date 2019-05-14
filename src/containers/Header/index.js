@@ -33,7 +33,7 @@ export class Header extends Component {
           Home 
         </NavLink>
         { name && userInfo}
-        <NavLink to={`${name ? '/' : '/login'}`} className='nav'>
+        <NavLink to={`${name ? '/favorites' : '/login'}`} className='nav'>
             {`${ name ? 'Favorites' : 'Create Account'}`}
         </NavLink>
         <NavLink to={`${name ? '/' : '/login'}`} className='nav' >
