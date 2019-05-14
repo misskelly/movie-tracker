@@ -33,6 +33,7 @@ export class MovieCard extends Component {
       vote_average,
       overview
     }
+    
     if (this.props.userId) {
       this.props.updateFavorites(body)
       this.setState({ loginPrompt: false })

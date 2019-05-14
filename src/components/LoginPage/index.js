@@ -61,7 +61,7 @@ export class LoginPage extends Component {
     } else {
       (email.length && password.length && confirmPassword === password && userName.length) && this.submitUserData();
     }
-    const passwordMismatch = password !== confirmPassword;
+    const passwordMismatch = this.props.formType === 'signup' && password !== confirmPassword;
     this.setState({ passwordMismatch })
   }
   

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieCard, mapStateToProps, mapDispatchToProps } from './index';
 import { fetchMovieInfo } from '../../thunks/fetchMovieInfo';
-import { updateFavorites } from '../../actions/'
+import { updateFavorites } from '../../actions'
 
 jest.mock('../../thunks/fetchMovieInfo');
 jest.mock('../../actions/');
@@ -11,7 +11,7 @@ describe('MovieCard', () => {
   const mockFetchInfo = jest.fn();
   const mockUpdateFavorites = jest.fn();
   const mockMovies = [
-
+    {title: 'Avengers Infinity War'}
   ]
   const mockMovie = {
     movie_id: 111,
@@ -79,17 +79,15 @@ describe('MovieCard', () => {
     expect(wrapper.state().loginPrompt).toEqual(false);
   })
 
-  it.skip('should invoke showmoreinfo on click', () => {
-    const instance = wrapper.instance();
-    jest.spyOn(instance, 'showMoreInfo')
+  it('should invoke showmoreinfo on click', () => {
     wrapper.find('.more-info-btn').simulate('click')
-    expect(instance.showMoreInfo).toHaveBeenCalledTimes(1)
+    expect(fetchMovieInfo).toHaveBeenCalledTimes(1)
   })
 
-  it.skip('should invoke toggleFavorite on click', () => {
-    const spyOnShowMoreInfo = jest.spyOn(wrapper.instance(), 'toggleFavorite')
+  it('should invoke toggleFavorite on click', () => {
+    wrapper.setState({ loginPrompt: true })
     wrapper.find('.favorite-btn').simulate('click');
-    expect(spyOnShowMoreInfo).toHaveBeenCalledTimes(1);
+    expect(wrapper.state().loginPrompt).toEqual(false);
   })
 
   describe('mapStateToProps', () => {
@@ -124,6 +122,5 @@ describe('MovieCard', () => {
     expect(mockDispatch).toHaveBeenCalledWith(dispatchUpdateFav);
     mappedProps.updateFavorites(mockMovie);
     expect(mockDispatch).toHaveBeenCalledWith(dispatchFetchInfo)
-
   })
 })
