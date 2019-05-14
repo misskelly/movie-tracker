@@ -76,12 +76,12 @@ export class MovieCard extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   userId: state.currentUser.id,
   userFavorites: state.currentUser.favorites || []
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   fetchInfo: (url) => dispatch(fetchMovieInfo(url)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie))
 })
