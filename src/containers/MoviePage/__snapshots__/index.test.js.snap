@@ -8,7 +8,7 @@ exports[`MoviePage should match component snapshot 1`] = `
     className="movie-banner-wrapper"
   >
     <img
-      alt="Promotional image from Shazam!"
+      alt="Promotional poster from Shazam!"
       className="movie-banner-img"
       src="https://image.tmdb.org/t/p/original//bi4jh0Kt0uuZGsGJoUUfqmbrjQg.jpg"
     />
@@ -17,7 +17,7 @@ exports[`MoviePage should match component snapshot 1`] = `
     className="poster-container"
   >
     <img
-      alt="Promotional image from Shazam!"
+      alt="Promotional poster from Shazam!"
       className="movie-poster-img"
       src="https://image.tmdb.org/t/p/w500//xnopI5Xtky18MPhK40cZAGAOVeV.jpg"
     />

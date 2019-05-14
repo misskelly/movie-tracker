@@ -89,7 +89,7 @@ export const mapDispatchToProps = (dispatch) => ({
 
 MovieCard.propTypes = {
   userId: PropTypes.number,
-  userFavorites: PropTypes.array,
+  userFavorites: PropTypes.func,
   fetchInfo: PropTypes.func,
   updateFavorites: PropTypes.func
 }
