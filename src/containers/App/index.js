@@ -46,7 +46,7 @@ export const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   movies: PropTypes.array,
-  addMovies: PropTypes.object
+  addMovies: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

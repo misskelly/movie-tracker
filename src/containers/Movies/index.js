@@ -37,7 +37,7 @@ export const mapStateToProps = (state) => ({
 MoviesGallery.propTypes = {
   movies: PropTypes.array,
   favorites: PropTypes.array,
-  showFavorites: PropTypes.func
+  showFavorites: PropTypes.bool
 }
 
 export default connect(mapStateToProps)(MoviesGallery)
