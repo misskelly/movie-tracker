@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { key } from '../../apiKey';
 import Header from '../Header'
 import Home from '../../components/Home';
@@ -22,7 +23,6 @@ export class App extends Component {
     }
   }
 
-
   render() {
     return (
       <div className="App">
@@ -43,5 +43,10 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 })
+
+App.propTypes = {
+  movies: PropTypes.array,
+  addMovies: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

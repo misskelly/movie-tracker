@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'; 
 import { formType, currentUser, showFavorites }  from '../../actions/index'
@@ -21,7 +22,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { name, email } = this.props.currentUser;
+    const { name } = this.props.currentUser;
     const userInfo = (
       <div>
         <h3>{`Yo watup ${name}`}</h3>
@@ -53,5 +54,12 @@ export const mapDispatchToProps = dispatch => ({
   logOutUser: () => dispatch(currentUser()),
   showFavorites: (bool) => dispatch(showFavorites(bool))
 })
+
+Header.propTypes = {
+  currentUser: PropTypes.object,
+  formType: PropTypes.func,
+  logOutUser: PropTypes.func,
+  showFavorites: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

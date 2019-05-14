@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import MovieCard from '../../components/MovieCard'
 import { connect } from 'react-redux'
 
@@ -15,6 +16,7 @@ export const MoviesGallery = (props) => {
     : movies
   const movieCards = showMovies.map(movie => 
     <MovieCard 
+      key={ movie.movie_id }
       card={movie}
     />)
   
@@ -31,5 +33,11 @@ export const mapStateToProps = (state) => ({
   favorites: state.currentUser.favorites || [],
   showFavorites: state.showFavorites
 })
+
+MoviesGallery.propTypes = {
+  movies: PropTypes.array,
+  favorites: PropTypes.array,
+  showFavorites: PropTypes.bool
+}
 
 export default connect(mapStateToProps)(MoviesGallery)

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 const uuidv4 = require('uuid/v4');
 
 export const Banner = (props) => {
@@ -28,4 +29,10 @@ export const mapStateToProps = (state) => ({
   showFavs: state.showFavorites
 })
 
+Banner.propTypes = {
+  posters: PropTypes.array,
+  showFavs: PropTypes.bool
+}
+
 export default connect(mapStateToProps)(Banner);
+
