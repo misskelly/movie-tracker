@@ -6,6 +6,13 @@
   box-shadow: 3px 2px 2px hsl(204, 42%, 27%);
   position: relative;
   color: hsl(0, 0%, 100%);
+
+  &:hover {
+    -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 5px 5px 5px hsl(204, 42%, 27%);
+  }
 }
 
 .poster-img {
@@ -13,5 +20,28 @@
   // filter: brightness(30%);
   object-fit: cover;
   width: 100%;
-  // z-index: 0;
+  z-index: 0;
 }
+
+.card-cover-heading {
+  margin: 0;
+}
+
+// .movie-card:hover {
+//   z-index: -2;
+// }
+.card-hover{
+  background: rgba(9, 7, 27, 0.671);
+  position: absolute;
+  top: 0;
+  // z-index: -1;
+  height: 100%;
+  width: 100%;
+  // &:hover {
+  //   z-index: 5;
+  // }
+}
+.favorite-btn {
+  border-radius: 50px;
+}
+//after pseudo class
