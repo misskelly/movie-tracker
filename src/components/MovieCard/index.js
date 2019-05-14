@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchMovieInfo } from '../../thunks/fetchMovieInfo'
-// import { postFavorite } from '../../thunks/postFavorite.js'
 import { updateFavorites } from '../../actions/index.js'
 import { key } from '../../apiKey'
 import { connect } from 'react-redux';
