@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 export const MoviePage = (props) =>  {
   const { title, backdrop_path, overview, poster_path, release_date, vote_average } = props.movie;
   
- 
   return(
     <section className='movie-page-container'>
       <article className='movie-banner-wrapper'>
@@ -30,7 +29,7 @@ export const MoviePage = (props) =>  {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movie: state.selectedMovie
 })
 

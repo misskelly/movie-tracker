@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePage should match component snapshot 1`] = `
+<section
+  className="movie-page-container"
+>
+  <article
+    className="movie-banner-wrapper"
+  >
+    <img
+      alt="Promotional image from Shazam!"
+      className="movie-banner-img"
+      src="https://image.tmdb.org/t/p/original//bi4jh0Kt0uuZGsGJoUUfqmbrjQg.jpg"
+    />
+  </article>
+  <article
+    className="poster-container"
+  >
+    <img
+      alt="Promotional image from Shazam!"
+      className="movie-poster-img"
+      src="https://image.tmdb.org/t/p/w500//xnopI5Xtky18MPhK40cZAGAOVeV.jpg"
+    />
+  </article>
+  <article
+    className="movie-text-container"
+  >
+    <h2
+      className="title-heading"
+    >
+      Shazam!
+    </h2>
+    <h3
+      className="date-heading"
+    >
+      2019-03-23
+    </h3>
+    <h4
+      className="rating-heading"
+    >
+      Rating: 
+      7.2
+    </h4>
+    <p
+      className="overview-text"
+    >
+      A boy is given the ability to become an adult superhero in times of need with a single magic word.
+    </p>
+  </article>
+</section>
+`;
