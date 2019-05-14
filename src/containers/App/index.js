@@ -8,7 +8,7 @@ import LoginPage from '../../components/LoginPage'
 import { fetchAnything } from '../../utils/apiFetches/fetchAnything';
 import { cleanMovies } from '../../utils/cleaners/cleanMovies'
 import { addMovies } from '../../actions/index'
-import MoviePage from '../../components/MoviePage'
+import MoviePage from '../../containers/MoviePage'
 
 export class App extends Component {
   async componentDidMount() {
