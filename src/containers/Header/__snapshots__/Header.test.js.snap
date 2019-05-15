@@ -26,6 +26,7 @@ exports[`Header should match snapshot 1`] = `
   </article>
   <nav
     className="desktop-nav"
+
   >
     <h3
       className="user-greeting"

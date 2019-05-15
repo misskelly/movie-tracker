@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { fetchMovieInfo } from '../../thunks/fetchMovieInfo'
-import { updateFavorites } from '../../actions/index.js'
-import { key } from '../../apiKey'
+import { fetchMovieInfo } from '../../thunks/fetchMovieInfo';
+import { updateFavorites } from '../../actions/index.js';
+import { key } from '../../apiKey';
 import { connect } from 'react-redux';
-import active from '../../images/active.svg'
-import inactive from '../../images/inactive.svg'
+import active from '../../images/active.svg';
+import inactive from '../../images/inactive.svg';
 
 export class MovieCard extends Component {
   constructor() {
@@ -87,5 +88,12 @@ export const mapDispatchToProps = (dispatch) => ({
   fetchInfo: (url) => dispatch(fetchMovieInfo(url)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie))
 })
+
+MovieCard.propTypes = {
+  userId: PropTypes.number,
+  userFavorites: PropTypes.func,
+  fetchInfo: PropTypes.func,
+  updateFavorites: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

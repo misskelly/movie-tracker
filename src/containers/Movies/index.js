@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import MovieCard from '../../components/MovieCard'
 import { connect } from 'react-redux'
 
@@ -15,12 +16,14 @@ export const MoviesGallery = (props) => {
     : movies
   const movieCards = showMovies.map(movie => 
     <MovieCard 
+      key={ movie.movie_id }
       card={movie}
     />)
   
   return (
     <section className='movies-section'>
       {movieCards}
+      { (props.favorites.length === 0 && props.showFavorites) && <h2>No Favorites Yet</h2> }
     </section>
   )
 }
@@ -30,5 +33,11 @@ export const mapStateToProps = (state) => ({
   favorites: state.currentUser.favorites || [],
   showFavorites: state.showFavorites
 })
+
+MoviesGallery.propTypes = {
+  movies: PropTypes.array,
+  favorites: PropTypes.array,
+  showFavorites: PropTypes.func
+}
 
 export default connect(mapStateToProps)(MoviesGallery)
