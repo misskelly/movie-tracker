@@ -26,7 +26,6 @@ exports[`Header should match snapshot 1`] = `
   </article>
   <nav
     className="desktop-nav"
-
   >
     <h3
       className="user-greeting"
@@ -56,6 +55,7 @@ exports[`Header should match snapshot 1`] = `
     className="mobile-nav hidden"
   >
     <img
+      alt="hamburger icon"
       className="menu-icon"
       src="hamburger.svg"
     />
