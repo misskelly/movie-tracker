@@ -14,7 +14,8 @@ export class Header extends Component {
       : this.props.formType('signup')
     switch(target.textContent) {
       case 'Log-out':
-        this.props.logOutUser()
+        this.props.logOutUser();
+        this.props.showFavorites(false);
         break;
       case 'Favorites':
         this.props.showFavorites(true)
@@ -58,7 +59,7 @@ export class Header extends Component {
           </NavLink>
         </nav>
         <nav className='mobile-nav hidden'>
-          <img className='menu-icon' src={hamburger}/>
+          <img className='menu-icon' alt='hamburger icon' src={hamburger}/>
         </nav>
       </header>
     )
