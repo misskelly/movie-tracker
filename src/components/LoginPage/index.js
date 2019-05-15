@@ -80,7 +80,8 @@ export class LoginPage extends Component {
           name="userName" 
           type='text' 
           id='userName' 
-          className='sign-up form-input'>
+          className='sign-up form-input'
+          autoComplete='name'>
         </input>
         <label 
           htmlFor='email-input' 
@@ -92,7 +93,8 @@ export class LoginPage extends Component {
           id='email-input' 
           className='sign-up form-input' 
           onChange={this.handleChange} 
-          name='email'>
+          name='email'
+          autoComplete="email">
           </input>
         <label 
           htmlFor='password-input' 
@@ -104,7 +106,8 @@ export class LoginPage extends Component {
           id='password-input' 
           className='sign-up form-input' 
           onChange={this.handleChange} 
-          name='password'>
+          name='password'
+          autoComplete='new-password'>
         </input>
         <label 
           htmlFor='confirm-password-input' 
@@ -116,7 +119,8 @@ export class LoginPage extends Component {
           name="confirmPassword" 
           type='password' 
           id='confirm-password-input' 
-          className='sign-up form-input'>
+          className='sign-up form-input'
+          autoComplete='new-password'>
         </input>
       </div>)
     const signInInputs = (
