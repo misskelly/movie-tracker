@@ -12,7 +12,11 @@
   z-index: 50;
 }
 
-
+nav {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
 .nav {
   text-transform: uppercase;
   transition: all 0.2s ease;
@@ -30,6 +34,9 @@
 
 .user-greeting {
   font-weight: bold;
+  font-size: 1.2rem;
+  font-family: $heading-font;
+  margin-right: 3rem;
 }
 
 .logo-wrapper {

@@ -25,19 +25,17 @@ exports[`Header should match snapshot 1`] = `
     </NavLink>
   </article>
   <nav>
+    <h3
+      className="user-greeting"
+    >
+      Hello misskelly
+    </h3>
     <NavLink
       className="nav"
       to="/"
     >
       Home
     </NavLink>
-    <div>
-      <h3
-        className="user-greeting"
-      >
-        Hello misskelly
-      </h3>
-    </div>
     <NavLink
       className="nav"
       to="/"

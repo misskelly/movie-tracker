@@ -24,11 +24,8 @@ export class Header extends Component {
 
   render() {
     const { name } = this.props.currentUser;
-    const userInfo = (
-      <div>
-        <h3 className='user-greeting'>{`Hello ${name}`}</h3>
-      </div>
-    )
+    const userInfo = (<h3 className='user-greeting'>{`Hello ${name}!`}</h3>)
+    
     return(
       <header className='header' onClick={ this.handleClick }>
         <article className='logo-wrapper'>
@@ -42,12 +39,12 @@ export class Header extends Component {
           </NavLink>
         </article>
         <nav>
+            { name && userInfo }
           <NavLink 
             to='/' 
             className='nav'>
             Home 
           </NavLink>
-          { name && userInfo}
           <NavLink 
             to={`${name ? '/' : '/login'}`}
             className='nav'>

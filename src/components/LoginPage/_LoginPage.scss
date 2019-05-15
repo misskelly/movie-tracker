@@ -59,7 +59,7 @@ input {
   color: $light-text;
   margin: 0 auto;
   background: $light-transparent;
-  font-size: 18px;
+  font-size: 1.1rem;
   text-align: center;
   width: 70%;
   border: 1px solid $background;
@@ -71,7 +71,6 @@ input {
     color: $light-text;
   }
 }
-
 
 
 .login-error {
