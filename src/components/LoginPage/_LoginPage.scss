@@ -1,6 +1,6 @@
 .login-page {
   padding: 5rem 0 0 0;
-  height: 100vh;
+  height: 120vh;
   text-align: center;
 }
 
@@ -65,6 +65,7 @@ input {
   border: 1px solid $background;
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
+  cursor: pointer;
 
   &:hover {
     background: $background;

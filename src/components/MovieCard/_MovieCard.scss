@@ -7,6 +7,7 @@
   position: relative;
   color: $light-text;
   overflow: hidden;
+  cursor: pointer;
   text-align: center;
 
   &:hover {
@@ -60,6 +61,7 @@
 
 .favorite-btn {
   grid-area: fav;
+  cursor: pointer;
 }
 
 .prompt {
@@ -91,6 +93,7 @@
   background: rgba(255, 255, 255, 0.482);
   outline: transparent;
   border: 2px solid transparent;
+  cursor: pointer;
 
   &:hover {
     border: 2px solid $main-text-color;
