@@ -33,9 +33,13 @@ export class Header extends Component {
       <header className='header' onClick={ this.handleClick }>
         <article className='logo-wrapper'>
           <h2 className='icon-text'>MT</h2>
+          <NavLink 
+            to='/' 
+            className='home-logo'>
           <img 
             src={film} 
             alt='film with star icon' className='film-icon'/>
+          </NavLink>
         </article>
         <nav>
           <NavLink 
