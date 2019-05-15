@@ -70,7 +70,7 @@ export class MovieCard extends Component {
         </button>
           { this.state.loginPrompt 
           ? (<p className='login-prompt prompt'>Please login to Favorite this card</p>)
-          : (<p className='prompt-placeholder prompt'></p>)
+          : (<p className='prompt-placeholder prompt'>X</p>)
           }
       </div>
     </article>
