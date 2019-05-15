@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'; 
 import { formType, currentUser, showFavorites }  from '../../actions/index';
-import film from '../../images/film.png'
+import film from '../../images/film.png';
+import hamburger from '../../images/hamburger.svg'
 
 
 export class Header extends Component {
@@ -24,11 +25,8 @@ export class Header extends Component {
 
   render() {
     const { name } = this.props.currentUser;
-    const userInfo = (
-      <div>
-        <h3 className='user-greeting'>{`Hello ${name}`}</h3>
-      </div>
-    )
+    const userInfo = (<h3 className='user-greeting'>{`Hello ${name}!`}</h3>)
+    
     return(
       <header className='header' onClick={ this.handleClick }>
         <article className='logo-wrapper'>
@@ -41,13 +39,13 @@ export class Header extends Component {
             alt='film with star icon' className='film-icon'/>
           </NavLink>
         </article>
-        <nav>
+        <nav className='desktop-nav'>
+            { name && userInfo }
           <NavLink 
             to='/' 
             className='nav'>
             Home 
           </NavLink>
-          { name && userInfo}
           <NavLink 
             to={`${name ? '/' : '/login'}`}
             className='nav'>
@@ -57,6 +55,9 @@ export class Header extends Component {
             to={`${name ? '/' : '/login'}`} className='nav' >
             {`${ name ? 'Log-out' : 'Log-in'}`}
           </NavLink>
+        </nav>
+        <nav className='mobile-nav hidden'>
+          <img className='menu-icon' src={hamburger}/>
         </nav>
       </header>
     )

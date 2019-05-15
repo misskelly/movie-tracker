@@ -80,7 +80,8 @@ export class LoginPage extends Component {
           name="userName" 
           type='text' 
           id='userName' 
-          className='sign-up form-input'>
+          className='sign-up form-input'
+          autoComplete='name'>
         </input>
         <label 
           htmlFor='email-input' 
@@ -92,7 +93,8 @@ export class LoginPage extends Component {
           id='email-input' 
           className='sign-up form-input' 
           onChange={this.handleChange} 
-          name='email'>
+          name='email'
+          autoComplete="email">
           </input>
         <label 
           htmlFor='password-input' 
@@ -104,7 +106,8 @@ export class LoginPage extends Component {
           id='password-input' 
           className='sign-up form-input' 
           onChange={this.handleChange} 
-          name='password'>
+          name='password'
+          autoComplete='new-password'>
         </input>
         <label 
           htmlFor='confirm-password-input' 
@@ -116,7 +119,8 @@ export class LoginPage extends Component {
           name="confirmPassword" 
           type='password' 
           id='confirm-password-input' 
-          className='sign-up form-input'>
+          className='sign-up form-input'
+          autoComplete='new-password'>
         </input>
       </div>)
     const signInInputs = (
@@ -160,13 +164,13 @@ export class LoginPage extends Component {
       : 'Email has already been used.'
     return (
       <main className='login-page'>
-        <h2>{ formType === 'login' ? 'LOGIN' : 'SIGN-UP' }</h2> 
+        <h2 className='form-heading'>{ formType === 'login' ? 'LOGIN' : 'SIGN-UP' }</h2> 
         <form className='login-form' onSubmit={this.handleSubmit}>
           <fieldset className='login-fieldset'>
             { formType === 'login' ? signInInputs : signUpInputs }
             { this.state.passwordMismatch &&  <p>Passwords do not match</p>}
             { this.state.error && <p className='login-error'>{errorText}</p>}
-            <input id='login-signup-submit-btn' type="submit" value="Submit" />
+            <input id='form-submit-btn' type="submit" value="Submit" />
           </fieldset>
         </form>
       </main>

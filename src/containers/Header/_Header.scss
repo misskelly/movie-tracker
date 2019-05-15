@@ -12,6 +12,11 @@
   z-index: 50;
 }
 
+.desktop-nav {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .nav {
   text-transform: uppercase;
@@ -30,6 +35,9 @@
 
 .user-greeting {
   font-weight: bold;
+  font-size: 1.2rem;
+  font-family: $heading-font;
+  margin-right: 3rem;
 }
 
 .logo-wrapper {
@@ -55,4 +63,28 @@
   width: 2rem;
   filter: brightness(80%);
   transform: rotate(90deg);
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 750px) {
+  body {
+    font-size: 14px;
+  }
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    color: $light-text;
+    cursor: pointer;
+    &:hover{
+      color: $main-text-color;
+    }
+  }
 }

@@ -208,7 +208,7 @@ describe('LoginPage', () => {
       currentUser={ userInputs }
       formType={ mockSignInUser } />
       )
-    wrapper.find('#login-signup-submit-btn').simulate('click');
+    wrapper.find('#form-submit-btn').simulate('click');
     expect(wrapper.state().passwordMismatch).toEqual(true);
   })
 

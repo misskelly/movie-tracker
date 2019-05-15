@@ -2,7 +2,6 @@
   display: inline-block;
   transition: all 0.3s ease;
   border-radius: 3px;
-  // border: 1px solid $secondary-color;
   background: $background;
   box-shadow: 3px 2px 2px hsl(204, 42%, 27%);
   position: relative;
@@ -61,7 +60,6 @@
 
 .favorite-btn {
   grid-area: fav;
-  // align-self: center;
 }
 
 .prompt {
