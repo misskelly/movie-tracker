@@ -9,7 +9,6 @@ exports[`MoviePage should match component snapshot 1`] = `
   >
     <img
       alt="Promotional poster from Shazam!"
-
       className="movie-banner-img"
       src="https://image.tmdb.org/t/p/original//bi4jh0Kt0uuZGsGJoUUfqmbrjQg.jpg"
     />
