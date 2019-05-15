@@ -22,21 +22,29 @@ exports[`MovieCard should match component snapshot 1`] = `
       to="/movies/111"
     >
       <button
-        className="more-info-btn"
+        className="more-info-btn btn"
         onClick={[Function]}
       >
-        More Info
+        More 
+        <br />
+         Info
       </button>
     </Link>
     <button
-      className="favorite-btn"
+      className="favorite-btn btn"
       onClick={[Function]}
     >
       <img
         alt="Star icon"
+        className="inactive-star star"
         src="inactive.svg"
       />
     </button>
+    <p
+      className="prompt-placeholder prompt"
+    >
+      X
+    </p>
   </div>
 </article>
 `;

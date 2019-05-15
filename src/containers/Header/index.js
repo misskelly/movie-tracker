@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'; 
-import { formType, currentUser, showFavorites }  from '../../actions/index'
+import { formType, currentUser, showFavorites }  from '../../actions/index';
+import film from '../../images/film.png';
+import hamburger from '../../images/hamburger.svg'
+
 
 export class Header extends Component {
   handleClick = ({target}) => {
@@ -23,23 +26,40 @@ export class Header extends Component {
 
   render() {
     const { name } = this.props.currentUser;
-    const userInfo = (
-      <div>
-        <h3>{`Yo watup ${name}`}</h3>
-      </div>
-    )
+    const userInfo = (<h3 className='user-greeting'>{`Hello ${name}!`}</h3>)
+    
     return(
       <header className='header' onClick={ this.handleClick }>
-        <NavLink to='/' className='nav'>
-          Home 
-        </NavLink>
-        { name && userInfo}
-        <NavLink to={`${name ? '/favorites' : '/login'}`} className='nav'>
+        <article className='logo-wrapper'>
+          <h2 className='icon-text'>MT</h2>
+          <NavLink 
+            to='/' 
+            className='home-logo'>
+          <img 
+            src={film} 
+            alt='film with star icon' className='film-icon'/>
+          </NavLink>
+        </article>
+        <nav className='desktop-nav'>
+            { name && userInfo }
+          <NavLink 
+            to='/' 
+            className='nav'>
+            Home 
+          </NavLink>
+          <NavLink 
+            to={`${name ? '/' : '/login'}`}
+            className='nav'>
             {`${ name ? 'Favorites' : 'Create Account'}`}
-        </NavLink>
-        <NavLink to={`${name ? '/' : '/login'}`} className='nav' >
+          </NavLink>
+          <NavLink 
+            to={`${name ? '/' : '/login'}`} className='nav' >
             {`${ name ? 'Log-out' : 'Log-in'}`}
-        </NavLink>
+          </NavLink>
+        </nav>
+        <nav className='mobile-nav hidden'>
+          <img className='menu-icon' src={hamburger}/>
+        </nav>
       </header>
     )
   }

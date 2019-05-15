@@ -1,2 +1,25 @@
-$main-text-color: hsl(51, 100%, 50%);
-$background: hsl(240, 100%, 9%);
+// FONTS
+$heading-font: 'Syncopate',
+sans-serif;
+$main-font: 'Comfortaa',
+cursive;
+$title-font: 'Prata',
+serif;
+
+
+
+$main-text-color: hsl(46, 92%, 52%);
+$secondary-color: hsl(44, 84%, 45%);
+$background: hsl(240, 46%, 5%);
+$dark-transparent: hsla(240, 52%, 5%, 0.39);
+$blur: hsla(0, 1%, 39%, 0.536);
+$light-background: rgba(255, 255, 255, 0.482);
+$light-accent: hsl(204, 95%, 32%);
+$light-transparent: hsla(204, 95%, 32%, 0.407);
+$light-text: hsl(0, 8%, 90%);
+
+@mixin heading-shadow {
+  color: $main-text-color;
+  font-family: $heading-font;
+  text-shadow: $secondary-color 1px 3px 2px, hsl(0, 0%, 28%) 3px 5px 3px, 2px 2px 2px rgba(210, 160, 18, 0);
+}

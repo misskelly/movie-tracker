@@ -5,28 +5,60 @@ exports[`Header should match snapshot 1`] = `
   className="header"
   onClick={[Function]}
 >
-  <NavLink
-    className="nav"
-    to="/"
+  <article
+    className="logo-wrapper"
   >
-    Home
-  </NavLink>
-  <div>
-    <h3>
-      Yo watup misskelly
+    <h2
+      className="icon-text"
+    >
+      MT
+    </h2>
+    <NavLink
+      className="home-logo"
+      to="/"
+    >
+      <img
+        alt="film with star icon"
+        className="film-icon"
+        src="film.png"
+      />
+    </NavLink>
+  </article>
+  <nav
+    className="desktop-nav"
+
+  >
+    <h3
+      className="user-greeting"
+    >
+      Hello misskelly!
     </h3>
-  </div>
-  <NavLink
-    className="nav"
-    to="/favorites"
+    <NavLink
+      className="nav"
+      to="/"
+    >
+      Home
+    </NavLink>
+    <NavLink
+      className="nav"
+      to="/"
+    >
+      Favorites
+    </NavLink>
+    <NavLink
+      className="nav"
+      to="/"
+    >
+      Log-out
+    </NavLink>
+  </nav>
+  <nav
+    className="mobile-nav hidden"
   >
-    Favorites
-  </NavLink>
-  <NavLink
-    className="nav"
-    to="/"
-  >
-    Log-out
-  </NavLink>
+    <img
+      className="menu-icon"
+      src="hamburger.svg"
+    />
+  </nav>
 </header>
 `;
