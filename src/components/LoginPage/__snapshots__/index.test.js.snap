@@ -4,7 +4,9 @@ exports[`LoginPage should match component snapshot with login formtype 1`] = `
 <main
   className="login-page"
 >
-  <h2>
+  <h2
+    className="form-heading"
+  >
     LOGIN
   </h2>
   <form
@@ -47,7 +49,7 @@ exports[`LoginPage should match component snapshot with login formtype 1`] = `
         />
       </div>
       <input
-        id="login-signup-submit-btn"
+        id="form-submit-btn"
         type="submit"
         value="Submit"
       />
@@ -60,7 +62,9 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
 <main
   className="login-page"
 >
-  <h2>
+  <h2
+    className="form-heading"
+  >
     SIGN-UP
   </h2>
   <form
@@ -80,6 +84,7 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
           Username
         </label>
         <input
+          autoComplete="name"
           className="sign-up form-input"
           id="userName"
           name="userName"
@@ -93,6 +98,7 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
           E-mail
         </label>
         <input
+          autoComplete="email"
           className="sign-up form-input"
           id="email-input"
           name="email"
@@ -106,6 +112,7 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
           Password
         </label>
         <input
+          autoComplete="new-password"
           className="sign-up form-input"
           id="password-input"
           name="password"
@@ -119,6 +126,7 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
           Confirm Password
         </label>
         <input
+          autoComplete="new-password"
           className="sign-up form-input"
           id="confirm-password-input"
           name="confirmPassword"
@@ -127,7 +135,7 @@ exports[`LoginPage should match component snapshot with signup formtype 1`] = `
         />
       </div>
       <input
-        id="login-signup-submit-btn"
+        id="form-submit-btn"
         type="submit"
         value="Submit"
       />

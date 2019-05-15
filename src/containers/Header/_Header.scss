@@ -1,13 +1,90 @@
 .header {
   padding: 1rem;
-  background-color: $background;
+  margin: 0;
   color: $main-text-color;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height: 4rem;
+  width: 100%;
+  background: $background;
+  z-index: 50;
+}
+
+.desktop-nav {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .nav {
+  text-transform: uppercase;
+  transition: all 0.2s ease;
   color: inherit;
   text-decoration: none;
-  font-size: 1.1rem;
-  padding: 1rem;
+  font-size: .9rem;
+  padding: 1.4rem 1rem;
+
+  &:hover {
+    text-shadow: $background 1px 3px 2px;
+    font-weight: bold;
+    background: $light-accent;
+  }
+}
+
+.user-greeting {
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: $heading-font;
+  margin-right: 3rem;
+}
+
+.logo-wrapper {
+  display: grid;
+  grid-template-rows: 1rem 2.5rem;
+  background: $blur;
+  padding: 0 3px 8px 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-text {
+  font-family: $heading-font;
+  font-size: 1.5rem;
+  margin: 0 0 5px 0;
+  padding: 5px 1px 3px 1px;
+}
+
+.film-icon {
+  position: absolute;
+  bottom: -3px;
+  right: 13px;
+  width: 2rem;
+  filter: brightness(80%);
+  transform: rotate(90deg);
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 750px) {
+  body {
+    font-size: 14px;
+  }
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    color: $light-text;
+    cursor: pointer;
+    &:hover{
+      color: $main-text-color;
+    }
+  }
 }

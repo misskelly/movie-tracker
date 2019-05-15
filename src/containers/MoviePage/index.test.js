@@ -2,12 +2,14 @@ import { MoviePage, mapStateToProps } from './index';
 import React from 'react';
 import { shallow } from 'enzyme';
 import { mockSelectedMovie } from '../../utils/mockData';
- describe('MoviePage', () => {
+
+ 
+describe('MoviePage', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow( < MoviePage movie={ mockSelectedMovie }/> )
   })
-
+    
   it('should match component snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   })

@@ -58,19 +58,21 @@ export class MovieCard extends Component {
         <Link to={`/movies/${card.movie_id}`}>
           <button 
             onClick={this.showMoreInfo} 
-            className='more-info-btn'>
-            More Info
+            className='more-info-btn btn'>
+            More <br/> Info
           </button>
         </Link>
         <button 
-          className='favorite-btn'
+          className='favorite-btn btn'
           onClick={this.toggleFavorite}>
           { card.favorite 
-            ? <img src={active} alt='Star icon for favorited movie'/> 
-            : <img src={inactive} alt='Star icon'/>}
+            ? <img src={active} alt='Star icon for favorited movie' className='active-star star'/> 
+            : <img src={inactive} alt='Star icon' className='inactive-star star'/>}
         </button>
-          { this.state.loginPrompt && 
-            (<p>Please login to Favorite this card</p>)}
+          { this.state.loginPrompt 
+          ? (<p className='login-prompt prompt'>Please login to Favorite this card</p>)
+          : (<p className='prompt-placeholder prompt'>X</p>)
+          }
       </div>
     </article>
     )
