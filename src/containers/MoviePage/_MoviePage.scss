@@ -10,25 +10,31 @@
 .movie-banner-wrapper {
   grid-area: banner;
   width: 100%;
+  margin-top: 5rem;
+
 }
 
 .movie-banner-img {
   width: 100%;
-  position: cover;
+  // position: cover;
 }
 
 .poster-container {
   grid-area: poster;
+  margin: 2rem 0 10rem 4rem;
 }
 
 .movie-poster-img {
-  width: 80%;
-  margin-top: 2rem;
+  width: 90%;
 }
 
 .movie-text-container {
   grid-area: text;
-  padding: 2rem;
+  width: 100%;
+  background: $light-background;
+  padding: 3rem;
+  margin-top: -10px;
+  z-index: -1;
 }
 
 .overview-text {
