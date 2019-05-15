@@ -82,5 +82,9 @@
     height: 2rem;
     width: 2rem;
     color: $light-text;
+    cursor: pointer;
+    &:hover{
+      color: $main-text-color;
+    }
   }
 }
