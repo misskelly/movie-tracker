@@ -12,11 +12,12 @@
   z-index: 50;
 }
 
-nav {
+.desktop-nav {
   width: 90%;
   display: flex;
   justify-content: flex-end;
 }
+
 .nav {
   text-transform: uppercase;
   transition: all 0.2s ease;
@@ -62,4 +63,24 @@ nav {
   width: 2rem;
   filter: brightness(80%);
   transform: rotate(90deg);
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 750px) {
+  body {
+    font-size: 14px;
+  }
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    color: $light-text;
+  }
 }

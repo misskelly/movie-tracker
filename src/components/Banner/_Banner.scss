@@ -24,8 +24,17 @@
   position: absolute;
   z-index: 1;
   bottom: 10%;
-  right: 5%;
+  right: 10%;
   margin: 0;
   font-size: 4rem;
   @include heading-shadow;
+}
+
+@media screen and (max-width: 750px) {
+  .banner-heading {
+    right: 5px;
+  }
+  .banner-heading {
+    font-size: 2rem;
+  }
 }

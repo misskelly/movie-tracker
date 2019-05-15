@@ -24,11 +24,13 @@ exports[`Header should match snapshot 1`] = `
       />
     </NavLink>
   </article>
-  <nav>
+  <nav
+    className="desktop-nav"
+  >
     <h3
       className="user-greeting"
     >
-      Hello misskelly
+      Hello misskelly!
     </h3>
     <NavLink
       className="nav"
@@ -48,6 +50,14 @@ exports[`Header should match snapshot 1`] = `
     >
       Log-out
     </NavLink>
+  </nav>
+  <nav
+    className="mobile-nav hidden"
+  >
+    <img
+      className="menu-icon"
+      src="hamburger.svg"
+    />
   </nav>
 </header>
 `;

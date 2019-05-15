@@ -16,7 +16,7 @@ $blur: hsla(0, 1%, 39%, 0.536);
 $light-background: rgba(255, 255, 255, 0.482);
 $light-accent: hsl(204, 95%, 32%);
 $light-transparent: hsla(204, 95%, 32%, 0.407);
-$light-text: hsl(0, 6%, 90%);
+$light-text: hsl(0, 8%, 90%);
 
 @mixin heading-shadow {
   color: $main-text-color;
