@@ -160,13 +160,13 @@ export class LoginPage extends Component {
       : 'Email has already been used.'
     return (
       <main className='login-page'>
-        <h2>{ formType === 'login' ? 'LOGIN' : 'SIGN-UP' }</h2> 
+        <h2 className='form-heading'>{ formType === 'login' ? 'LOGIN' : 'SIGN-UP' }</h2> 
         <form className='login-form' onSubmit={this.handleSubmit}>
           <fieldset className='login-fieldset'>
             { formType === 'login' ? signInInputs : signUpInputs }
             { this.state.passwordMismatch &&  <p>Passwords do not match</p>}
             { this.state.error && <p className='login-error'>{errorText}</p>}
-            <input id='login-signup-submit-btn' type="submit" value="Submit" />
+            <input id='form-submit-btn' type="submit" value="Submit" />
           </fieldset>
         </form>
       </main>

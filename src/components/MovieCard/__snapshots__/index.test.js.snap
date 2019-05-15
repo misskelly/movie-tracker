@@ -42,7 +42,9 @@ exports[`MovieCard should match component snapshot 1`] = `
     </button>
     <p
       className="prompt-placeholder prompt"
-    />
+    >
+      X
+    </p>
   </div>
 </article>
 `;

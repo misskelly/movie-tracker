@@ -1,3 +1,79 @@
+.login-page {
+  padding: 5rem 0 0 0;
+  height: 100vh;
+  text-align: center;
+}
+
+.form-heading {
+  @include heading-shadow;
+  font-size: 3rem;
+}
+
+
+.login-form {
+  margin: 0 auto;
+}
+
+.login-fieldset {
+  width: 60%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  margin: 0 auto;
+  border: 1px solid $secondary-color;
+  padding: 2rem;
+  background: $dark-transparent;
+  box-shadow: inset 0px 0px 15px $blur;
+  -moz-box-shadow: inset 0px 0px 15px $blur;
+  -webkit-box-shadow: inset 0px 0px 15px $blur;
+}
+
+label {
+  color: $light-text;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+input {
+  background: rgba(255, 255, 255, .1);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  margin: 0;
+  outline: $background;
+  padding: 1rem;
+  width: 70%;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#form-submit-btn {
+  position: relative;
+  display: block;
+  padding: 2rem auto;
+  color: $light-text;
+  margin: 0 auto;
+  background: $light-transparent;
+  font-size: 18px;
+  text-align: center;
+  width: 70%;
+  border: 1px solid $background;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background: $background;
+    color: $light-text;
+  }
+}
+
+
+
 .login-error {
   color: darkred;
   cursor: default;
