@@ -4,6 +4,11 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
   margin: 3%;
+
+  h2 {
+    text-align: center;
+    color: #f4c112;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 750px) {
