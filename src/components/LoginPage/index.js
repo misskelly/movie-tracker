@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { postUser } from '../../utils/apiFetches/postUser';
 import { fetchAnything } from '../../utils/apiFetches/fetchAnything';
 import { currentUser, formType } from '../../actions';
 import { Redirect } from 'react-router-dom';
-
 
 export class LoginPage extends Component {
   constructor() {
@@ -188,5 +188,12 @@ export const mapDispatchToProps = (dispatch) => ({
     dispatch(currentUser(id, name, email, favorites)), 
   changeForm: (text) => dispatch(formType(text))
 })
+
+LoginPage.propTypes = {
+  formType: PropTypes.string,
+  currentUser: PropTypes.object,
+  signInUser: PropTypes.func,
+  changeForm: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

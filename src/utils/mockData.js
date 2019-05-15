@@ -60,3 +60,70 @@ export const mockMovies = [
   }
 ]
 
+export const mockSelectedMovie = {
+  adult: false,
+  backdrop_path: "/bi4jh0Kt0uuZGsGJoUUfqmbrjQg.jpg",
+  belongs_to_collection: null,
+  budget: 80000000,
+  homepage: "http://www.shazammovie.com",
+  id: 287947,
+  imdb_id: "tt0448115",
+  original_language: "en",
+  original_title: "Shazam!",
+  overview: "A boy is given the ability to become an adult superhero in times of need with a single magic word.",
+  popularity: 307.286,
+  poster_path: "/xnopI5Xtky18MPhK40cZAGAOVeV.jpg",
+  release_date: "2019-03-23",
+  revenue: 321937864,
+  runtime: 132,
+  status: "Released",
+  tagline: "Just Say The Magic Word",
+  title: "Shazam!",
+  video: false,
+  vote_average: 7.2,
+  vote_count: 1528,
+  showFavorites: false
+}
+
+export const mockMoviesArr = [
+  {
+    "vote_count": 5215,
+    "id": 299534,
+    "video": false,
+    "vote_average": 8.5,
+    "title": "Avengers: Endgame",
+    "popularity": 335.962,
+    "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    "original_language": "en",
+    "original_title": "Avengers: Endgame",
+    "genre_ids": [
+      12,
+      878,
+      28
+    ],
+    "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+    "adult": false,
+    "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+    "release_date": "2019-04-24"
+  },
+  {
+    "vote_count": 5215,
+    "id": 299534,
+    "video": false,
+    "vote_average": 8.5,
+    "title": "Avengers: Endgame",
+    "popularity": 335.962,
+    "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    "original_language": "en",
+    "original_title": "Avengers: Endgame",
+    "genre_ids": [
+      12,
+      878,
+      28
+    ],
+    "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+    "adult": false,
+    "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+    "release_date": "2019-04-24"
+  },
+]

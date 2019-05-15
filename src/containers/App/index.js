@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { key } from '../../apiKey';
 import Header from '../Header'
 import Home from '../../components/Home';
@@ -22,12 +23,12 @@ export class App extends Component {
     }
   }
 
-
   render() {
     return (
       <div className="App">
         <Header />
         <Route exact path='/' component={ Home } />
+        <Route exact path='/favorites' component={ Home } />
         <Route exact path='/login' component={ LoginPage } />
         <Route exact path='/movies/:id' component={ MoviePage } />
       </div>
@@ -42,5 +43,10 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 })
+
+App.propTypes = {
+  movies: PropTypes.array,
+  addMovies: PropTypes.object
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
