@@ -56,7 +56,6 @@
 
 .favorite-btn {
   grid-area: fav;
-  // padding: 3px;
 }
 
 .prompt {
@@ -90,7 +89,7 @@
 
   &:hover {
     border: 2px solid $main-text-color;
-    background: white;
+    background: hsl(0, 6%, 90%);
   }
 
 }

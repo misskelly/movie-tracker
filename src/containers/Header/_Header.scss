@@ -24,7 +24,7 @@
   &:hover {
     text-shadow: $background 1px 3px 2px;
     font-weight: bold;
-    background: $light;
+    background: $light-accent;
   }
 }
 
@@ -38,10 +38,10 @@
   background: $blur;
   padding: 0 3px 8px 3px;
   cursor: pointer;
+  position: relative;
 }
 
 .icon-text {
-  // position: relative;
   font-family: $heading-font;
   font-size: 1.5rem;
   margin: 0 0 5px 0;
@@ -49,9 +49,10 @@
 }
 
 .film-icon {
-  justify-self: center;
+  position: absolute;
+  bottom: -3px;
+  right: 13px;
   width: 2rem;
-  margin: 4px 0 -5px 0;
   filter: brightness(80%);
   transform: rotate(90deg);
 }
