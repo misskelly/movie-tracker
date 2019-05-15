@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePage should match component snapshot 1`] = `
+<section
+  className="movie-page-container"
+>
+  <article
+    className="movie-banner-wrapper"
+  >
+    <h1>
+      Shazam!
+    </h1>
+  </article>
+  <article
+    className="movie-info-container"
+  >
+    <div
+      className="poster-container"
+    />
+  </article>
+</section>
+`;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchMovieInfo } from '../../thunks/fetchMovieInfo'
+import { updateFavorites } from '../../actions/index.js'
 import { key } from '../../apiKey'
 import { connect } from 'react-redux';
 import active from '../../images/active.svg'
@@ -10,41 +11,81 @@ export class MovieCard extends Component {
   constructor() {
     super();
     this.state = {
-      cardHover: false
+      cardHover: false,
+      loginPrompt: false
     }
   }
   
   showMoreInfo = () => {
-    const { card, moreInfo } = this.props;
-    const url = `https://api.themoviedb.org/3/movie/${card.id}?api_key=${key}&language=en-US`;
+    const { card } = this.props;
+    const url = `https://api.themoviedb.org/3/movie/${card.movie_id}?api_key=${key}&language=en-US`;
     this.props.fetchInfo(url);
+  }
+
+  toggleFavorite = () => {
+    const { movie_id, title, poster_path, release_date, vote_average, overview } = this.props.card
+    const body = {
+      movie_id,
+      user_id: this.props.userId,
+      title,
+      poster_path,
+      release_date,
+      vote_average,
+      overview
+    }
+    
+    if (this.props.userId) {
+      this.props.updateFavorites(body)
+      this.setState({ loginPrompt: false })
+    } else {
+      this.setState({ loginPrompt: !this.state.loginPrompt })
+    }
   }
 
   render() {
     const { card } = this.props;
     return (
       <article 
-        key={card.id} 
+        key={card.movie_id} 
         className='movie-card'>
       <img 
-        src={card.poster} 
+        src={`https://image.tmdb.org/t/p/w500/${card.poster_path}`} 
         alt={`Promotional movie poster for ${card.title}`} 
-        className='poster-img'
+        className='poster-img'/>
        <div className='card-hover'>
         <h4 className='card-hover-heading'>{card.title}</h4>
-        <Link to={`/movies/${card.id}`}>
-        <button onClick={this.showMoreInfo} className='more-info-btn'>More Info</button></Link>
-        <button className='favorite-btn'>
-          { card.favorite === true ? <img src={active} alt='Star icon for favorited movie'/> : <img src={inactive} alt='Star icon'/>}
+        <Link to={`/movies/${card.movie_id}`}>
+          <button 
+            onClick={this.showMoreInfo} 
+            className='more-info-btn btn'>
+            More <br/> Info
+          </button>
+        </Link>
+        <button 
+          className='favorite-btn btn'
+          onClick={this.toggleFavorite}>
+          { card.favorite 
+            ? <img src={active} alt='Star icon for favorited movie' className='active-star star'/> 
+            : <img src={inactive} alt='Star icon' className='inactive-star star'/>}
         </button>
+          { this.state.loginPrompt 
+          ? (<p className='login-prompt prompt'>Please login to Favorite this card</p>)
+          : (<p className='prompt-placeholder prompt'>X</p>)
+          }
       </div>
     </article>
     )
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchInfo: (url) => dispatch(fetchMovieInfo(url))
+export const mapStateToProps = (state) => ({
+  userId: state.currentUser.id,
+  userFavorites: state.currentUser.favorites || []
 })
 
-export default connect(null, mapDispatchToProps)(MovieCard);
+export const mapDispatchToProps = (dispatch) => ({
+  fetchInfo: (url) => dispatch(fetchMovieInfo(url)),
+  updateFavorites: (movie) => dispatch(updateFavorites(movie))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

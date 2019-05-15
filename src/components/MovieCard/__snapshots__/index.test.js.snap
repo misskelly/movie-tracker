@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard should match component snapshot 1`] = `
+<article
+  className="movie-card"
+  key="111"
+>
+  <img
+    alt="Promotional movie poster for Avengers End Game"
+    className="poster-img"
+    src="https://image.tmdb.org/t/p/w500/poster.jpg"
+  />
+  <div
+    className="card-hover"
+  >
+    <h4
+      className="card-hover-heading"
+    >
+      Avengers End Game
+    </h4>
+    <Link
+      to="/movies/111"
+    >
+      <button
+        className="more-info-btn btn"
+        onClick={[Function]}
+      >
+        More 
+        <br />
+         Info
+      </button>
+    </Link>
+    <button
+      className="favorite-btn btn"
+      onClick={[Function]}
+    >
+      <img
+        alt="Star icon"
+        className="inactive-star star"
+        src="inactive.svg"
+      />
+    </button>
+    <p
+      className="prompt-placeholder prompt"
+    >
+      X
+    </p>
+  </div>
+</article>
+`;

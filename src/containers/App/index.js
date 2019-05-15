@@ -5,16 +5,16 @@ import { key } from '../../apiKey';
 import Header from '../Header'
 import Home from '../../components/Home';
 import LoginPage from '../../components/LoginPage'
-import { fetchMovies } from '../../utils/apiFetches/fetchMovies';
+import { fetchAnything } from '../../utils/apiFetches/fetchAnything';
 import { cleanMovies } from '../../utils/cleaners/cleanMovies'
 import { addMovies } from '../../actions/index'
-import MoviePage from '../../components/MoviePage'
+import MoviePage from '../../containers/MoviePage'
 
 export class App extends Component {
   async componentDidMount() {
     const nowShowingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
     try {
-      const movies = await fetchMovies(nowShowingUrl);
+      const movies = await fetchAnything(nowShowingUrl);
       const result = await cleanMovies(movies.results)
       await this.props.addMovies(result)
     } catch(error) {
@@ -35,11 +35,11 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 })
 

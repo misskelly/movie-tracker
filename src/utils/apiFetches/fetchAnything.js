@@ -1,4 +1,4 @@
-export const fetchMovies = async (url) => {
+export const fetchAnything = async (url) => {
   const response = await fetch(url);
   if(!response.ok) {
     throw Error("Failed to fetch movies")

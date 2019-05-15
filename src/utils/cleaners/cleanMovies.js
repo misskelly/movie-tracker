@@ -1,5 +1,11 @@
-export const cleanMovies = (movies) => movies.map(movie => ({
-  id: movie.id,
-  poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-  title: movie.title
-}))
+export const cleanMovies = (movies) => movies.map(movie => {
+  const { id, title, poster_path, release_date, vote_average, overview } = movie
+  return {
+    movie_id: id,
+    title,
+    poster_path,
+    release_date,
+    vote_average,
+    overview
+  }
+})

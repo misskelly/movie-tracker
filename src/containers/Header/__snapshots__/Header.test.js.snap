@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot 1`] = `
+<header
+  className="header"
+  onClick={[Function]}
+>
+  <article
+    className="logo-wrapper"
+  >
+    <h2
+      className="icon-text"
+    >
+      MT
+    </h2>
+    <NavLink
+      className="home-logo"
+      to="/"
+    >
+      <img
+        alt="film with star icon"
+        className="film-icon"
+        src="film.png"
+      />
+    </NavLink>
+  </article>
+  <nav
+    className="desktop-nav"
+  >
+    <h3
+      className="user-greeting"
+    >
+      Hello misskelly!
+    </h3>
+    <NavLink
+      className="nav"
+      to="/"
+    >
+      Home
+    </NavLink>
+    <NavLink
+      className="nav"
+      to="/"
+    >
+      Favorites
+    </NavLink>
+    <NavLink
+      className="nav"
+      to="/"
+    >
+      Log-out
+    </NavLink>
+  </nav>
+  <nav
+    className="mobile-nav hidden"
+  >
+    <img
+      className="menu-icon"
+      src="hamburger.svg"
+    />
+  </nav>
+</header>
+`;
